@@ -624,6 +624,28 @@ footer a.fleche {
     .presentation {
         padding-bottom: 100px;
     }
+
+    .prestation_boutique {
+        margin-bottom: 0;
+    }
+
+    .prestation_boutique .presta_boutique .banniere_lilas {
+        display: none;
+    }
+
+    .prestation_boutique .presta_boutique .presta_boutique_ligne {
+        position: initial;
+        transform: initial;
+        background-color: var(--color-article);
+        width: auto;
+        height: auto;
+        text-align: center;
+        padding: 60px 0;
+    }
+
+    .prestation_boutique .presta_boutique .presta_boutique_ligne h3 {
+        padding-bottom: 50px;
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -652,6 +674,7 @@ footer a.fleche {
         box-shadow: none;
         width: auto;
     }
+
 }
 
 @media screen and (max-width: 790px) {
