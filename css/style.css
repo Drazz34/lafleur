@@ -306,6 +306,7 @@ header nav ul li:hover a {
     align-items: center;
     height: 350px;
     margin-bottom: 70px;
+    text-align: center;
 }
 
 .h1 {
@@ -517,7 +518,20 @@ footer a.fleche {
 
 /* -------- RESPONSIVE ----------- */
 
+@media screen and (max-width: 1400px) {
+
+    .presentation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .presentation .presentation_g {
+        margin-bottom: 50px;
+    }
+}
+
 @media screen and (max-width: 1350px) {
+
     header nav ul li {
         font-size: 16px;
     }
@@ -552,6 +566,18 @@ footer a.fleche {
     .fete_mere {
         flex-direction: column;
         padding-bottom: 50px;
+    }
+
+    .coeur {
+        height: auto;
+    }
+
+    .coeur #coeur {
+        flex-wrap: wrap;
+    }
+
+    .coeur #coeur .coeur_art {
+        margin: 0 10px;
     }
 }
 
@@ -594,6 +620,10 @@ footer a.fleche {
     .banniere .titre .ligne {
         display: none;
     }
+
+    .presentation {
+        padding-bottom: 100px;
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -615,6 +645,12 @@ footer a.fleche {
 
     footer p.center {
         margin-left: 16px;
+    }
+
+    .presentation .presentation_d {
+        border: none;
+        box-shadow: none;
+        width: auto;
     }
 }
 
@@ -672,5 +708,20 @@ footer a.fleche {
     .fete_mere .fete_mere_g {
         width: 320px;
         height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .presentation .presentation_g {
+        display: none;
+    }
+
+    .presentation .presentation_d h3 {
+        margin-bottom: 30px;
+    }
+
+    .coeur {
+        margin-bottom: 0;
     }
 }
