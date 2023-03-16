@@ -470,6 +470,87 @@ header nav ul li:hover a {
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+/* -------- PAGE CONTACT ----------- */
+
+.nous_trouver {
+    margin-bottom: 150px;
+}
+
+.nous_trouver .contact_titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 150px 0;
+    text-align: center;
+}
+
+.nous_trouver .contact_titre iframe {
+    margin-top: 80px;
+}
+
+.nous_trouver .contact_coord {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 65px;
+}
+
+.nous_trouver .contact_coord .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nous_trouver .contact_coord .fs48 {
+    font-size: 3em;
+    font-family: 300;
+    color: var(--color-typo);
+}
+
+.nous_trouver .contact_coord .fs36 {
+    font-size: 2.25em;
+    color: var(--color-typo);
+}
+
+.nous_trouver .contact_coord .mr50 {
+    margin-right: 50px;
+}
+
+.nous_trouver .contact_coord .contact_horaire {
+    margin-top: 150px;
+}
+
+.formulaire {
+    padding: 0 10%;
+    margin-bottom: 150px;
+}
+
+.formulaire h1 {
+    margin-bottom: 100px;
+}
+
+.formulaire form input {
+    width: 100%;
+    height: 80px;
+    background: transparent;
+    font-size: 40px;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+.formulaire form textarea {
+    width: 100%;
+    background: transparent;
+    font-size: 40px;
+    padding-left: 30px;
+    margin-bottom: 50px;
+}
+
+.formulaire form button {
+    cursor: pointer;
+    border: none;
+}
+
 /* -------- FOOTER ----------- */
 
 footer {
@@ -508,7 +589,7 @@ footer p.center {
     text-align: center;
 }
 
-footer .basis50 {
+.basis50 {
     flex-basis: 50%;
 }
 

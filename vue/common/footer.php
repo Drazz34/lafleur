@@ -4,7 +4,7 @@
 
         <img class="logo_footer" src="./img/logo.svg" alt="Logo de Lafleur">
 
-        <p>Lafleur<br>Sabine et Guillaume CHOLET<br>Place Ormeau<br>84160 LOURMARIN</p>
+        <p>Lafleur<br>Sabine et Guillaume CHOLET<br>Chemin des écoliers<br>84160 LOURMARIN</p>
 
     </div>
 

@@ -28,7 +28,7 @@
 
         <img src="./img/devanture.jpg" alt="Femme souriante sortant de notre boutique">
 
-        <p>Place Ormeau<br>84160 LOURMARIN</p>
+        <p>Chemin des écoliers<br>84160 LOURMARIN</p>
 
     </div>
 
