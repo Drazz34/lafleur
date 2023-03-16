@@ -391,6 +391,84 @@ header nav ul li:hover a {
     font-size: 1.25em;
 }
 
+/* -------- PAGE PRESTATIONS ----------- */
+
+.prestation_titre {
+    text-align: center;
+    padding: 70px 0;
+}
+
+.presta {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.presta .presta_art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 370px;
+    height: 460px;
+    margin: 0 10px 150px;
+}
+
+.presta .presta_art img {
+    width: 370px;
+    height: 260px;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.presta .presta_art a.presta_cate {
+    text-decoration: none;
+    margin: 25px 0;
+}
+
+.presta .presta_art p {
+    font-size: 1.25em;
+}
+
+.prestation_boutique {
+    margin-bottom: 150px;
+}
+
+.presta_boutique {
+    position: relative;
+}
+
+.presta_boutique .banniere_lilas {
+    width: 100%;
+    object-fit: cover;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.presta_boutique .presta_boutique_ligne {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1000px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(167, 144, 72, 0.75);
+}
+
+.presta_boutique .presta_boutique_ligne h3 {
+    color: var(--color-white);
+}
+
+.presta_boutique .presta_boutique_ligne .boutique_ligne {
+    width: 325px;
+    height: 195px;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
 /* -------- FOOTER ----------- */
 
 footer {

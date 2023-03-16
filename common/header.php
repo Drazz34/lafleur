@@ -6,7 +6,7 @@
         <ul>
             <li><a href="index.php?page=accueil">Accueil</a></li>
             <li><a href="index.php?page=presentation">Présentation</a></li>
-            <li><a href="index.php?page=prestation">Prestations</a></li>
+            <li><a href="index.php?page=prestations">Prestations</a></li>
             <li><a href="index.php?page=boutique">Boutique</a></li>
             <li><a href="index.php?page=contact">Contact</a></li>
             <li><a href="">Blog</a></li>
