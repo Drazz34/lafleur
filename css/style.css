@@ -529,7 +529,7 @@ header nav ul li:hover a {
     margin-bottom: 100px;
 }
 
-.formulaire form input {
+.formulaire form .input_form {
     width: 100%;
     height: 80px;
     background: transparent;
@@ -546,7 +546,7 @@ header nav ul li:hover a {
     margin-bottom: 50px;
 }
 
-.formulaire form button {
+.formulaire form .input_submit {
     cursor: pointer;
     border: none;
 }

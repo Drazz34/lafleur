@@ -1,4 +1,4 @@
-<img src="./img/comptoir" alt="Comptoir de fleuriste" class="comptoir">
+<img src="./img/comptoir.jpg" alt="Comptoir de fleuriste" class="comptoir">
 
 <section class="bienvenue">
 

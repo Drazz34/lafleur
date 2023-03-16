@@ -1,66 +1,33 @@
 <?php
-if(isset($_POST['email'])) {
 
-    // Mettez ici l'adresse e-mail où vous souhaitez recevoir les messages du formulaire de contact
-    $email_to = "jfvillac@hotmail.com";
-    $email_subject = "Nouveau message depuis le formulaire de contact";
+var_dump($_POST);
 
-    function died($error) {
-        // Votre message d'erreur ici
-        echo "Nous sommes désolés, mais des erreurs ont été détectées dans le formulaire que vous avez envoyé. ";
-        echo "Ces erreurs apparaissent ci-dessous.<br /><br />";
-        echo $error."<br /><br />";
-        echo "Merci de corriger ces erreurs.<br /><br />";
-        die();
+if (!empty($_POST)) {
+    // Vérifier que les champs obligatoires ne sont pas vides
+    if (empty($_POST['nom']) || empty($_POST['email']) || empty($_POST['message'])) {
+        echo 'Veuillez remplir tous les champs obligatoires.';
+        exit;
     }
 
-    // validation des champs du formulaire
-    if(!isset($_POST['nom']) ||
-        !isset($_POST['email']) ||
-        !isset($_POST['telephone']) ||
-        !isset($_POST['message'])) {
-        died('Nous sommes désolés, mais il semble y avoir un problème avec le formulaire que vous avez soumis.');
+    // Préparation des informations de l'email
+    $to = 'jfvillac@hotmail.com';
+    $subject = 'Envoi depuis page Contact';
+    $message = '<h1>Message envoyé depuis la page Contact de monsite.fr</h1>
+                <p><b>Nom : </b>' . htmlspecialchars($_POST['nom']) . '<br>
+                <b>Email : </b>' . htmlspecialchars($_POST['email']) . '<br>
+                <b>Téléphone : </b>' . htmlspecialchars($_POST['telephone']) . '<br>
+                <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
+    $headers = "From: webmaster@monsite.fr\r\n";
+    $headers .= "Reply-To: " . $_POST['email'] . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+    // Envoi de l'email
+    if (mail($to, $subject, $message, $headers)) {
+        echo '<p>Votre message a bien été envoyé.</p>';
+    } else {
+        echo '<p>Une erreur est survenue lors de l\'envoi du message.</p>';
     }
-
-    $name = $_POST['nom']; // obligatoire
-    $email = $_POST['email']; // obligatoire
-    $phone = $_POST['telephone']; // facultatif
-    $message = $_POST['message']; // obligatoire
-
-    $error_message = "";
-    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/';
-
-  if(!preg_match($email_exp,$email)) {
-    $error_message .= 'L\'adresse e-mail que vous avez entrée ne semble pas être valide.<br />';
-  }
-
-    $string_exp = "/^[A-Za-z .'-]+$/";
-
-  if(!preg_match($string_exp,$name)) {
-    $error_message .= 'Le nom que vous avez entré ne semble pas être valide.<br />';
-  }
-
-  if(strlen($message) < 2) {
-    $error_message .= 'Le message que vous avez entré ne semble pas être valide.<br />';
-  }
-
-  if(strlen($error_message) > 0) {
-    died($error_message);
-  }
-
-    $email_message = "Détails du formulaire de contact ci-dessous.\n\n";
-
-    function clean_string($string) {
-        $bad = array("content-type","bcc:","to:","cc:","href");
-        return str_replace($bad,"",$string);
-    }
-    
-    // création de l'en-tête de l'e-mail
-    $headers = 'From: '.$email."\r\n".
-    'Reply-To: '.$email."\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-    
-    @mail($email_to, $email_subject, $email_message, $headers);  
-
-    
+} else {
+    echo 'Le formulaire n\'a pas été soumis.';
 }

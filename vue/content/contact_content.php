@@ -43,25 +43,25 @@
 
     <h1 class="h1">Nous contacter</h1>
 
-    <form action="vue/content/contact_form_handler.php" method="post" onsubmit="clearForm();">
+    <form action="vue/content/contact_form_handler.php" method="post">
 
             <label for="nom"></label>
 
-            <input type="text" name="nom" id="contact_nom" placeholder="Nom">
+            <input type="text" name="nom" id="contact_nom" class="input_form" placeholder="Nom">
 
             <label for="email"></label>
 
-            <input type="email" name="email" id="contact_email" placeholder="Email">
+            <input type="email" name="email" id="contact_email" class="input_form" placeholder="Email">
 
             <label for="telephone"></label>
 
-            <input type="tel" name="telephone" id="contact_telephone" placeholder="Téléphone">
+            <input type="tel" name="telephone" id="contact_telephone" class="input_form" placeholder="Téléphone">
 
             <label for="message"></label>
 
             <textarea name="message" id="contact_message" cols="30" rows="10" placeholder="Message"></textarea>
 
-            <button type="submit" class="btn_lien">Envoyer</button>
+            <input type="submit" class="btn_lien input_submit" value="Envoyer">
 
     </form>
 

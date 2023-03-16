@@ -48,34 +48,6 @@
 
     ?>
     <script src="./js/main.js"></script>
-    <script>
-// récupérer le formulaire
-var form = document.querySelector('form');
-
-// ajouter un événement de soumission au formulaire
-form.addEventListener('submit', function(event) {
-  // empêcher l'envoi normal du formulaire
-  event.preventDefault();
-  
-  // envoyer le formulaire en utilisant AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', form.action);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onload = function() {
-    // afficher le message de confirmation dans un popup
-    alert('Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.');
-  };
-  xhr.send(new FormData(form));
-});
-
-
-function clearForm() {
-  document.getElementById("contact_nom").value = "";
-  document.getElementById("contact_email").value = "";
-  document.getElementById("contact_telephone").value = "";
-  document.getElementById("contact_message").value = "";
-}
-</script>
 
 </body>
 
