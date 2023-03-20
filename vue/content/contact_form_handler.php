@@ -25,9 +25,7 @@ if (!empty($_POST)) {
     // Envoi de l'email
     if (mail($to, $subject, $message, $headers)) {
         header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=true');
-        exit;
-        // echo "<script>window.location.href='https://villac.needemand.com/site_lafleur/index.php?page=contact';</script>";
-        
+        exit;        
     } else {
         header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=false');
         exit;

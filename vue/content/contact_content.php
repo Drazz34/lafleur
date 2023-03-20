@@ -66,15 +66,3 @@
     </form>
 
 </section>
-
-<?php
-
-if (isset($_GET['success']) && $_GET['success'] == 'true') {
-    echo "<script>alert('Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.');</script>";
-}
-if (isset($_GET['success']) && $_GET['success'] == 'false') {
-    echo "<script>alert('Votre message n\'a pas pu être envoyé, veuillez recommencer s\'il vous plait.');</script>";
-}
-if (isset($_GET['success']) && $_GET['success'] == 'obli') {
-    echo "<script>alert('Veuillez remplir tous les champs s\'il vous plait.');</script>";
-}
