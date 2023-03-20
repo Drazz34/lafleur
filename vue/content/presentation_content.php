@@ -2,7 +2,7 @@
 
     <h1 class="h1">Artisan fleuriste de passion</h3>
 
-        <a href="" class="btn_lien">Nous trouver</a>
+        <a href="index.php?page=contact" class="btn_lien">Nous trouver</a>
 
 </div>
 

@@ -1,11 +1,11 @@
 <?php
 
-var_dump($_POST);
+// var_dump($_POST);
 
 if (!empty($_POST)) {
     // Vérifier que les champs obligatoires ne sont pas vides
     if (empty($_POST['nom']) || empty($_POST['email']) || empty($_POST['message'])) {
-        echo 'Veuillez remplir tous les champs obligatoires.';
+        header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=obli');
         exit;
     }
 
@@ -24,10 +24,15 @@ if (!empty($_POST)) {
 
     // Envoi de l'email
     if (mail($to, $subject, $message, $headers)) {
-        echo '<p>Votre message a bien été envoyé.</p>';
+        header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=true');
+        exit;
+        // echo "<script>window.location.href='https://villac.needemand.com/site_lafleur/index.php?page=contact';</script>";
+        
     } else {
-        echo '<p>Une erreur est survenue lors de l\'envoi du message.</p>';
+        header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=false');
+        exit;
     }
 } else {
-    echo 'Le formulaire n\'a pas été soumis.';
+    header('Location: https://villac.needemand.com/site_lafleur/index.php?page=contact&success=false');
+    exit;
 }
