@@ -27,9 +27,11 @@
             include "vue/content/presentation_content.php";
             break;
         case 'prestations':
-            include "vue/content/prestation_content.php";
+            include "controleur/c_prestation.php";
+            include "vue/content/prestation_content.php";            
             break;
         case 'boutique':
+            include "controleur/c_boutique.php";
             include "vue/content/boutique_content.php";
             break;
         case 'contact':

@@ -1,18 +1,35 @@
 <section>
 
     <div class="prestation_titre">
-    
+
         <h1 class="h1">Nos prestations</h1>
-    
+
     </div>
-    
+
     <div class="presta">
+
+        <?php foreach ($lesCategories as $uneCategorie) : ?>
+
+            <div class="presta_art">
+
+                <a href="index.php?page=boutique&categorie=<?= $uneCategorie['id'] ?>"><img src="./img/<?= $uneCategorie['photo'] ?>" alt="<?= $uneCategorie['alt'] ?>"></a>
+
+                <a href="index.php?page=boutique&categorie=<?= $uneCategorie['id'] ?>" class="presta_cate h3"><?= $uneCategorie['nom'] ?></a>
+
+                <p><?= $uneCategorie['description'] ?></p>
+
+            </div>
+
+        <?php endforeach ?>
+
+
+
+
+        <!-- <div class="presta_art">
     
-        <div class="presta_art">
+            <a href="index.php?page=boutique&categorie="><img src="./img/mariage.jpg" alt="Bouquet de la mariée"></a>
     
-            <a href=""><img src="./img/mariage.jpg" alt="Bouquet de la mariée"></a>
-    
-            <a href="" class="presta_cate h3">Mariages</a>
+            <a href="index.php?page=boutique&categorie=" class="presta_cate h3">Mariages</a>
     
             <p>Nous réalisons les bouquets de mariée retombants, ronds, en forme d'éventail, des centres de table...</p>
     
@@ -56,8 +73,8 @@
     
             <p>Nos compositions sont élégantes en hauteur ou rondes avec des contenants ou vanneries.</p>
     
-        </div>
-    
+        </div> -->
+
     </div>
 
 </section>
