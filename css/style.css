@@ -493,6 +493,7 @@ header nav ul li:hover a {
     display: flex;
     flex-wrap: wrap;
     margin: 0 65px;
+    justify-content: space-between;
 }
 
 .nous_trouver .contact_coord .flex {
@@ -619,6 +620,11 @@ footer a.fleche {
 
     header nav {
         width: 800px;
+    }
+
+    .nous_trouver .contact_coord .contact_adresse p,
+    .nous_trouver .contact_coord .contact_tel p {
+        font-size: 2em;
     }
 }
 
@@ -756,6 +762,14 @@ footer a.fleche {
         width: auto;
     }
 
+    .nous_trouver .contact_titre iframe {
+        width: 600px;
+    }
+
+    .nous_trouver .contact_coord .contact_adresse p,
+    .nous_trouver .contact_coord .contact_tel p {
+        font-size: 1em;
+    }
 }
 
 @media screen and (max-width: 790px) {
@@ -790,6 +804,10 @@ footer a.fleche {
         border: none;
         box-shadow: none;
     }
+
+    .nous_trouver .contact_titre {
+        padding: 50px 0;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -813,6 +831,52 @@ footer a.fleche {
         width: 320px;
         height: auto;
     }
+
+    .nous_trouver .contact_coord {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 30px;
+    }
+
+    .nous_trouver .contact_coord .contact_adresse p,
+    .nous_trouver .contact_coord .contact_tel p {
+        font-size: 1.2em;
+    }
+
+    .nous_trouver .contact_coord .contact_tel {
+        padding-top: 80px;
+    }
+
+    .nous_trouver .contact_coord .contact_horaire {
+        margin-top: 80px;
+    }
+
+    .nous_trouver .contact_coord .contact_horaire img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .nous_trouver .contact_coord .contact_horaire p span.fs36 {
+        font-size: 1.2em;
+    }
+
+    .nous_trouver .contact_coord .contact_horaire p span.fs48 {
+        font-size: 2.5em;
+    }
+
+    .formulaire {
+        padding: 0 2%;
+        margin-bottom: 50px;
+    }
+
+    .formulaire h1 {
+        font-size: 2.4em;
+        text-align: center;
+    }
+
+    .formulaire form textarea {
+        height: 400px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -827,5 +891,10 @@ footer a.fleche {
 
     .coeur {
         margin-bottom: 0;
+    }
+
+    .nous_trouver .contact_titre iframe {
+        width: 375px;
+        height: 300px;
     }
 }
