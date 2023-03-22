@@ -552,6 +552,111 @@ header nav ul li:hover a {
     border: none;
 }
 
+/* -------- PAGE BOUTIQUE ----------- */
+
+.titre_boutique {
+    text-align: center;
+    margin: 100px 0;
+}
+
+form .submit_button input {
+    cursor: pointer;
+    border: none;
+}
+
+.select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--color-typo);
+}
+
+.select label {
+    font-size: 1.875em;
+}
+
+.select select {
+    background-color: var(--color-white);
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 100px 0;
+}
+
+.articles .card_article {
+    width: 304px;
+    height: 450px;
+    margin: 50px;
+    text-align: center;
+    color: var(--color-typo);
+    background: var(--color-white);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.articles .card_article img {
+    width: 100%;
+    height: 304px;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+
+.articles .card_article p {
+    font-size: 1.875em;
+}
+
+.articles .card_article a {
+    text-decoration: none;
+    color: var(--color-typo);
+    font-size: 1.5em;
+}
+
+/* POPUP photo article
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+	padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+	top: 0;
+	bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+	padding: 0;
+}
+
+
+/* for zoom animation 
+uncomment this part if you haven't added this code anywhere else */
+
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg {
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: all 0.3s ease-out; 
+	-moz-transition: all 0.3s ease-out; 
+	-o-transition: all 0.3s ease-out; 
+	transition: all 0.3s ease-out;
+}
+
+.mfp-with-zoom.mfp-ready .mfp-container {
+		opacity: 1;
+}
+.mfp-with-zoom.mfp-ready.mfp-bg {
+		opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing.mfp-bg {
+	opacity: 0;
+}
+
+
 /* -------- FOOTER ----------- */
 
 footer {
