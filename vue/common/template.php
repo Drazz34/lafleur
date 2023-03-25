@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -73,6 +79,14 @@
         $url = 'https://villac.needemand.com/site_lafleur/index.php?page=contact';
         echo "<script>window.location.href='$url';</script>";
     }
+
+    // Gestion de la session pour le bouton "Commander"
+    if (isset($_SESSION['user'])) {
+        $url_commande = "commande.php";
+    } else {
+        $url_commande = "connexion.php";
+    }
+
     ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -82,3 +96,9 @@
 </body>
 
 </html>
+
+<!--     Ensuite, pour utiliser cette variable $url_commande dans le code HTML, il suffit de l'insérer dans le lien avec la balise a, comme ceci :
+
+html
+
+<a href="<?php echo $url_commande; ?>">Commander</a> -->
