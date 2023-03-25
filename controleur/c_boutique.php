@@ -3,12 +3,11 @@
 include './modele/M_Categorie.php';
 include './modele/M_Article.php';
 
-if (!isset($_GET['categorie']) && $page == "boutique") {
-    $articles = M_Article::afficheTousLesArticles();
-    
-}
+// Variable pour afficher tous les articles
+$articles = M_Article::afficheTousLesArticles();
 
-if (isset($_GET['categorie']) && $page == "boutique") {
+// Variable pour afficher tous les articles d'une catégorie
+if (isset($_GET['categorie'])) {
     $id = $_GET['categorie'];
-    $categorie = M_Categorie::trouveUneCategorie($id);
 }
+$articlesDUneCategorie = M_Article::afficheLesArticlesDUneCategorie($id);

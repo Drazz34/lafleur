@@ -11,7 +11,7 @@
             <div class="select_categorie">
                 <label for="categorie">Choix par catégorie : </label>
                 <select name="categorie" id="categorie">
-                    <option value="">-- Catégorie --</option>
+                    <option value="">-- Catégories --</option>
                     <option value="1" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 1) echo "selected"; ?>>Mariage</option>
                     <option value="3" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 3) echo "selected"; ?>>Remerciement</option>
                     <option value="4" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 4) echo "selected"; ?>>Naissance</option>
@@ -23,7 +23,7 @@
             <div class="select_couleur">
                 <label for="couleur">Choix par couleur : </label>
                 <select name="couleur" id="couleur">
-                    <option value="">-- Couleur --</option>
+                    <option value="">-- Couleurs --</option>
                     <option value="1" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 1) echo "selected"; ?>>Rouge</option>
                     <option value="2" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 2) echo "selected"; ?>>Jaune</option>
                     <option value="3" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 3) echo "selected"; ?>>Rose</option>
@@ -33,7 +33,7 @@
 
             <div class="submit_button">
 
-            <input type="submit" value="Rechercher" class="btn_lien">
+                <input type="submit" value="Rechercher" class="btn_lien">
             </div>
 
         </div>
@@ -49,7 +49,8 @@
 
     <div class="articles">
 
-        <?php if ((!isset($_GET['categorie'])) || $_GET['categorie'] == '') : ?>
+        <!-- Afficher tous les articles -->
+        <?php if (!isset($_GET['categorie']) || $_GET['categorie'] == "") : ?>
 
             <?php foreach ($articles as $article) : ?>
 
@@ -65,15 +66,51 @@
 
                 </div>
 
+            <?php endforeach ?>
 
+        <?php endif ?>
 
+        <!-- Afficher les articles par catégorie -->
+        <?php if (isset($_GET['categorie']) && $_GET['categorie'] !== "") : ?>
+
+            <?php foreach ($articlesDUneCategorie as $article) : ?>
+
+                <div class="card_article">
+
+                    <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
+
+                    <h3 class="h3"><?= $article['nom'] ?></h3>
+
+                    <p><?= $article['prix_unitaire'] ?> €</p>
+
+                    <a href="">Commander</a>
+
+                </div>
 
             <?php endforeach ?>
 
         <?php endif ?>
 
+        <!-- Afficher les articles par couleur -->
+        <?php if (isset($_GET['categorie']) && $_GET['categorie'] !== "") : ?>
 
+            <?php foreach ($articlesDUneCategorie as $article) : ?>
 
+                <div class="card_article">
+
+                    <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
+
+                    <h3 class="h3"><?= $article['nom'] ?></h3>
+
+                    <p><?= $article['prix_unitaire'] ?> €</p>
+
+                    <a href="">Commander</a>
+
+                </div>
+
+            <?php endforeach ?>
+
+        <?php endif ?>
 
     </div>
 
