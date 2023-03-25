@@ -82,9 +82,9 @@ session_start();
 
     // Gestion de la session pour le bouton "Commander"
     if (isset($_SESSION['user'])) {
-        $url_commande = "commande.php";
+        $url_commande = "commande_content.php";
     } else {
-        $url_commande = "connexion.php";
+        $url_commande = "connexion_content.php";
     }
 
     ?>
