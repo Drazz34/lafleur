@@ -50,7 +50,7 @@
     <div class="articles">
 
         <!-- Afficher tous les articles -->
-        <?php if (!isset($_GET['categorie']) || $_GET['categorie'] == "") : ?>
+        <?php if ((!isset($_GET['categorie']) && (!isset($_GET['couleur']))) || ($_GET['categorie'] == "" && $_GET['couleur'] == "")) : ?>
 
             <?php foreach ($articles as $article) : ?>
 
@@ -71,7 +71,7 @@
         <?php endif ?>
 
         <!-- Afficher les articles par catégorie -->
-        <?php if (isset($_GET['categorie']) && $_GET['categorie'] !== "") : ?>
+        <?php if (isset($_GET['categorie']) && (!isset($_GET['couleur']) || $_GET['couleur'] == "")) : ?>
 
             <?php foreach ($articlesDUneCategorie as $article) : ?>
 
@@ -92,9 +92,30 @@
         <?php endif ?>
 
         <!-- Afficher les articles par couleur -->
-        <?php if (isset($_GET['categorie']) && $_GET['categorie'] !== "") : ?>
+        <?php if (isset($_GET['couleur']) && (!isset($_GET['categorie']) || $_GET['categorie'] == "")) : ?>
 
-            <?php foreach ($articlesDUneCategorie as $article) : ?>
+            <?php foreach ($articlesDUneCouleur as $article) : ?>
+
+                <div class="card_article">
+
+                    <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
+
+                    <h3 class="h3"><?= $article['nom'] ?></h3>
+
+                    <p><?= $article['prix_unitaire'] ?> €</p>
+
+                    <a href="">Commander</a>
+
+                </div>
+
+            <?php endforeach ?>
+
+        <?php endif ?>
+
+        <!-- Afficher les articles par catégorie et par couleur -->
+        <?php if (isset($_GET['categorie']) && isset($_GET['couleur'])) : ?>
+
+            <?php foreach ($articlesDUneCategorieEtDUneCouleur as $article) : ?>
 
                 <div class="card_article">
 

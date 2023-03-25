@@ -771,6 +771,14 @@ footer a.fleche {
     .coeur #coeur .coeur_art {
         margin: 0 10px;
     }
+
+    .select label {
+        font-size: 1.2em;
+    }
+
+    .select .submit_button {
+        font-size: 0.6em;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -837,6 +845,21 @@ footer a.fleche {
 
     .prestation_boutique .presta_boutique .presta_boutique_ligne h3 {
         padding-bottom: 50px;
+    }
+
+    .select {
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 400px;
+    }
+
+    .select label {
+        margin-bottom: 20px;
+    }
+
+    .select .select_categorie, .select .select_couleur {
+        display: flex;
+        flex-direction: column;
     }
 }
 
