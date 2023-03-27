@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+$client = [];
+if (!empty($_SESSION['client'])) {
+    $client = $_SESSION['client'];
+}
 
 ?>
 
@@ -45,7 +49,12 @@ session_start();
             include "vue/content/contact_content.php";
             break;
         case 'connexion':
+            include "controleur/c_connexion.php";
             include "vue/content/connexion_content.php";
+            break;
+        case 'profil':
+            include "controleur/c_profil.php";
+            include "vue/content/profil_content.php";
             break;
         default:
             include "vue/content/404.html";
@@ -78,13 +87,6 @@ session_start();
         unset($params['success']);
         $url = 'https://villac.needemand.com/site_lafleur/index.php?page=contact';
         echo "<script>window.location.href='$url';</script>";
-    }
-
-    // Gestion de la session pour le bouton "Commander"
-    if (isset($_SESSION['user'])) {
-        $url_commande = "commande_content.php";
-    } else {
-        $url_commande = "connexion_content.php";
     }
 
     ?>

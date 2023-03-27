@@ -661,6 +661,12 @@ uncomment this part if you haven't added this code anywhere else */
 	opacity: 0;
 }
 
+/* -------- PAGE CONNEXION ----------- */
+
+.formulaire .connexion_h1 {
+    text-align: center;
+    margin: 100px 0;
+}
 
 /* -------- FOOTER ----------- */
 

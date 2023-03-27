@@ -45,19 +45,19 @@
 
     <form action="vue/content/contact_form_handler.php" method="post">
 
-            <label for="nom"></label>
+            <label for="contact_nom"></label>
 
             <input type="text" name="nom" id="contact_nom" class="input_form" placeholder="Nom">
 
-            <label for="email"></label>
+            <label for="contact_email"></label>
 
             <input type="email" name="email" id="contact_email" class="input_form" placeholder="Email">
 
-            <label for="telephone"></label>
+            <label for="contact_telephone"></label>
 
             <input type="tel" name="telephone" id="contact_telephone" class="input_form" placeholder="Téléphone">
 
-            <label for="message"></label>
+            <label for="contact_message"></label>
 
             <textarea name="message" id="contact_message" cols="30" rows="10" placeholder="Message"></textarea>
 
