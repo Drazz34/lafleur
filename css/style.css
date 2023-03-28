@@ -668,6 +668,31 @@ uncomment this part if you haven't added this code anywhere else */
     margin: 100px 0;
 }
 
+/* -------- PAGE PROFIL ----------- */
+
+.commande h1 {
+    text-align: center;
+    margin: 100px 0;
+}
+
+.commande p {
+    color: var(--color-typo);
+    font-size: 1.875em;
+}
+
+table.commandes, th, td {
+    border: 1px solid var(--color-stroke);
+    border-collapse: collapse;
+    color: var(--color-typo);
+    font-weight: normal;
+    text-align: center;
+}
+
+table.commandes th,
+table.commandes td {
+    padding: 10px;
+}
+
 /* -------- FOOTER ----------- */
 
 footer {
