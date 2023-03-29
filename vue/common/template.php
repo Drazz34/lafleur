@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-$client = [];
+
+include_once "./modele/M_Client.php";
+
 if (!empty($_SESSION['client'])) {
     $client = $_SESSION['client'];
 }
@@ -24,6 +26,11 @@ if (!empty($_SESSION['client'])) {
 
     <?php
 
+$client = M_Client::trouverClientParId($_SESSION['client']['id']);
+if (!empty($client)) {
+    $_SESSION['client'] = $client;
+}
+var_dump($client);
     include "header.php";
 
     if (!isset($page)) {

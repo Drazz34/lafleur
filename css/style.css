@@ -620,6 +620,10 @@ form .submit_button input {
     font-size: 1.5em;
 }
 
+.articles .card_article a.image-popup-no-margins {
+    cursor: zoom-in;
+}
+
 /* POPUP photo article
 /* padding-bottom and top for image */
 .mfp-no-margins img.mfp-img {
@@ -675,7 +679,7 @@ uncomment this part if you haven't added this code anywhere else */
     margin: 100px 0;
 }
 
-.commande p, .information p {
+.commande p {
     color: var(--color-typo);
     font-size: 1.875em;
     margin: 0 0 50px 50px;
@@ -696,6 +700,12 @@ table.commandes td {
 
 .commande table.commandes {
     margin: 0 0 80px 50px;
+}
+
+.information p {
+    color: var(--color-typo);
+    font-size: 1.875em;
+    margin-bottom: 50px;
 }
 
 /* -------- FOOTER ----------- */

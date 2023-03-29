@@ -3,13 +3,28 @@
 class M_Client
 {
 
+    public static function trouverClientParId($id)
+{
+    // Récupération de l'objet PDO pour effectuer des requêtes SQL
+    $pdo = AccesDonnees::getPdo();
+
+    // Recherche du client dans la base de données
+    $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE id = :id');
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $client = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $client;
+}
+
     /**
      * Permet à un client inscrit de se connecter
      * 
      * @param string $email
      * @param string $password
      */
-    public static function trouverClientParEmailEtMDP($email, $password) {
+    public static function trouverClientParEmailEtMDP($email, $password)
+    {
         $pdo = AccesDonnees::getPdo();
         $stmt = $pdo->prepare("SELECT * FROM lf_clients WHERE email = :email");
         $stmt->bindParam(":email", $email);
@@ -20,6 +35,8 @@ class M_Client
         }
         return false;
     }
+
+    
 
     /**
      * Crée un nouveau client avec une adresse associée.
@@ -34,6 +51,8 @@ class M_Client
      */
     public static function creerClient($email, $password, $nom, $prenom, $rue, $cp, $ville)
     {
+
+
         // Récupération de l'objet PDO pour effectuer des requêtes SQL
         $pdo = AccesDonnees::getPdo();
 
@@ -60,6 +79,17 @@ class M_Client
         $stmt_cp->bindParam(':cp', $cp);
         $stmt_cp->execute();
         $cp_id = $stmt_cp->fetchColumn();
+
+        // Si le code postal n'existe pas encore dans la base de données, on l'ajoute
+        if (!$cp_id) {
+            $stmt_ajout_cp = $pdo->prepare('INSERT INTO lf_codes_postaux(code_postal) VALUES (:cp)');
+            $stmt_ajout_cp->bindParam(':cp', $cp);
+            $stmt_ajout_cp->execute();
+
+            // On récupère l'ID du code postal nouvellement créé
+            $cp_id = $pdo->lastInsertId();
+        }
+
         $stmt->bindParam(':cp_id', $cp_id);
 
         // Recherche de l'ID de la ville correspondante dans la table lf_villes
