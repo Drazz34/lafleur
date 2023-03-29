@@ -98,9 +98,3 @@ if (!empty($_SESSION['client'])) {
 </body>
 
 </html>
-
-<!--     Ensuite, pour utiliser cette variable $url_commande dans le code HTML, il suffit de l'insérer dans le lien avec la balise a, comme ceci :
-
-html
-
-<a href="<?php echo $url_commande; ?>">Commander</a> -->

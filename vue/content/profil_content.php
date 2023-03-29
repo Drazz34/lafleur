@@ -39,8 +39,8 @@
 
 </section>
 
-<section>
+<section class="information">
 
-    <h1 class="h1">Modifier mes informations :</h1>
+    <p>Modifier mes informations :</p>
 
 </section>

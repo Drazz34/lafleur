@@ -675,9 +675,10 @@ uncomment this part if you haven't added this code anywhere else */
     margin: 100px 0;
 }
 
-.commande p {
+.commande p, .information p {
     color: var(--color-typo);
     font-size: 1.875em;
+    margin: 0 0 50px 50px;
 }
 
 table.commandes, th, td {
@@ -691,6 +692,10 @@ table.commandes, th, td {
 table.commandes th,
 table.commandes td {
     padding: 10px;
+}
+
+.commande table.commandes {
+    margin: 0 0 80px 50px;
 }
 
 /* -------- FOOTER ----------- */
