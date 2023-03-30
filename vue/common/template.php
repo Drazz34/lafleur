@@ -37,7 +37,7 @@ if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'true') {
 // if (!empty($client)) {
 //     $_SESSION['client'] = $client;
 // }
-var_dump($client);
+// var_dump($client);
     include "header.php";
 
     if (!isset($page)) {
@@ -69,6 +69,10 @@ var_dump($client);
         case 'profil':
             include "controleur/c_profil.php";
             include "vue/content/profil_content.php";
+            break;
+        case 'commande':
+            include "controleur/c_commande.php";
+            include "vue/content/commande_content.php";
             break;
         default:
             include "vue/content/404.html";

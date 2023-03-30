@@ -922,6 +922,10 @@ footer a.fleche {
         display: flex;
         flex-direction: column;
     }
+
+    table.commandes th, table.commandes td {
+        font-size: 1em;
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -997,6 +1001,10 @@ footer a.fleche {
     .nous_trouver .contact_titre {
         padding: 50px 0;
     }
+
+    .formulaire form .input_form, .formulaire form textarea {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -1066,6 +1074,14 @@ footer a.fleche {
     .formulaire form textarea {
         height: 400px;
     }
+
+    .commande p {
+        margin: 0 0 50px 20px;
+    }
+
+    .commande table.commandes {
+        margin: 0 0 80px 20px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1085,5 +1101,18 @@ footer a.fleche {
     .nous_trouver .contact_titre iframe {
         width: 375px;
         height: 300px;
+    }
+
+    .commande p {
+        text-align: center;
+        margin: 0 0 50px 0;
+    }
+
+    .commande table.commandes {
+        margin: 0 10px 80px 10px;
+    }
+
+    .formulaire form .input_form, .formulaire form textarea {
+        font-size: 24px;
     }
 }

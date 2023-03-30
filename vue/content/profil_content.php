@@ -88,7 +88,3 @@
     </form>
 
 </section>
-
-<?php var_dump($client);
-
-var_dump($adresse);
