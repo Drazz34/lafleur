@@ -14,8 +14,11 @@
                 echo '<li><a href="index.php?page=connexion">Se connecter</a></li>';
             } else {
                 echo '<li><a href="index.php?page=profil">Mon profil</a></li>';
+                echo '<form action="index.php" method="post">
+                <input type="hidden" name="deconnexion" value="true">
+                <button type="submit" class="btn_clean" onclick="return confirm("Êtes-vous sûr(e) de vouloir vous déconnecter ?")">Déconnexion</button>
+            </form>';
             } ?>
-            <!-- <li><a href="index.php?page=connexion">Se connecter</a></li> -->
         </ul>
     </nav>
 
@@ -32,9 +35,9 @@
 
 <div class="banniere">
 
-<?php if (!empty($client)) {
+<!-- <?php if (!empty($client)) {
         echo "<h3>Bienvenue " . $client['prenom'] . " !</h3>";
-    } ?>
+    } ?> -->
 
 
 

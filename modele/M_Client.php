@@ -17,6 +17,20 @@ class M_Client
     return $client;
 }
 
+public static function trouverClientParEmail($email)
+{
+    // Récupération de l'objet PDO pour effectuer des requêtes SQL
+    $pdo = AccesDonnees::getPdo();
+
+    // Recherche du client dans la base de données
+    $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE email = :email');
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $client = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $client;
+}
+
     /**
      * Permet à un client inscrit de se connecter
      * 
@@ -57,7 +71,7 @@ class M_Client
         $pdo = AccesDonnees::getPdo();
 
         // Hashage du mot de passe du client
-        $password = password_hash($password, PASSWORD_BCRYPT);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insertion du client dans la table lf_clients
         $stmt = $pdo->prepare('INSERT INTO lf_clients(email, mot_de_passe, nom, prenom) VALUES (:email, :password, :nom, :prenom)');

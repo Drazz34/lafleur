@@ -10,14 +10,17 @@ if (isset($_POST['connexion_submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $password = filter_input(INPUT_POST, 'password');
 
-    $client = M_Client::trouverClientParEmailEtMDP($email, $password);
+    // Trouver le client par email
+    $client = M_Client::trouverClientParEmail($email);
 
-    if (!$client) {
+    if (!$client || !password_verify($password, $client["mot_de_passe"])) {
         echo '<script>alert("Données saisies incorrectes ou client non-inscrit");</script>';
     } else {
         $_SESSION['client'] = $client;
+
         echo '<script>alert("Vous êtes bien connecté(e) ' . $client["prenom"] . ' !");</script>';
-        header('Location: index.php');
+        echo '<script>window.location.replace("index.php");</script>'; // Redirection avec JavaScript
+        exit; // Arrêt de l'exécution du script
     }
 }
 

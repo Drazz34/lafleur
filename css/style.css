@@ -72,8 +72,17 @@ header nav ul li a {
     transition: all 0.4s ease-in-out;
 }
 
-header nav ul li:hover a {
+header nav ul li:hover a, header nav .btn_clean:hover {
     color: var(--color-yellow);
+}
+
+header nav .btn_clean {
+    cursor: pointer;
+    border: none;
+    color: var(--color-white);
+    background-color: transparent;
+    font-size: 24px;
+    transition: all 0.4s ease-in-out;
 }
 
 .nav-toggler {
@@ -682,7 +691,7 @@ uncomment this part if you haven't added this code anywhere else */
 .commande p {
     color: var(--color-typo);
     font-size: 1.875em;
-    margin: 0 0 50px 50px;
+    margin: 0 0 50px 150px;
 }
 
 table.commandes, th, td {
@@ -696,10 +705,11 @@ table.commandes, th, td {
 table.commandes th,
 table.commandes td {
     padding: 10px;
+    font-size: 1.875em;
 }
 
 .commande table.commandes {
-    margin: 0 0 80px 50px;
+    margin: 0 0 80px 150px;
 }
 
 .information p {
@@ -770,7 +780,7 @@ footer a.fleche {
 
 @media screen and (max-width: 1350px) {
 
-    header nav ul li {
+    header nav ul li, header nav .btn_clean {
         font-size: 16px;
     }
 

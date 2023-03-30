@@ -26,10 +26,17 @@ if (!empty($_SESSION['client'])) {
 
     <?php
 
-$client = M_Client::trouverClientParId($_SESSION['client']['id']);
-if (!empty($client)) {
-    $_SESSION['client'] = $client;
+if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'true') {
+    unset($_SESSION['client']); // Supprimer la variable de session
+    header('Location: index.php'); // Rediriger vers la page d'accueil
 }
+
+// if (isset($client)){
+//     $client = M_Client::trouverClientParId($_SESSION['client']['id']);
+// } 
+// if (!empty($client)) {
+//     $_SESSION['client'] = $client;
+// }
 var_dump($client);
     include "header.php";
 

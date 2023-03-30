@@ -37,9 +37,9 @@ class M_Profil
         // Récupération de l'objet PDO pour effectuer des requêtes SQL
         $pdo = AccesDonnees::getPdo();
 
-        // Hashage du mot de passe du client
+        
         if ($password) {
-            $password = password_hash($password, PASSWORD_BCRYPT);
+            
             $stmt = $pdo->prepare('UPDATE lf_clients SET email = :email, mot_de_passe = :password, nom = :nom, prenom = :prenom WHERE id = :idClient');
             $stmt->bindParam(':password', $password);
         } else {
