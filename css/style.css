@@ -72,7 +72,8 @@ header nav ul li a {
     transition: all 0.4s ease-in-out;
 }
 
-header nav ul li:hover a, header nav .btn_clean:hover {
+header nav ul li:hover a,
+header nav .btn_clean:hover {
     color: var(--color-yellow);
 }
 
@@ -612,14 +613,16 @@ form .submit_button input {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.articles .card_article img {
+.articles .card_article img,
+.contenu_produit .card_article img {
     width: 100%;
     height: 304px;
     object-fit: cover;
     cursor: zoom-in;
 }
 
-.articles .card_article p {
+.articles .card_article p,
+.contenu_produit .card_article p {
     font-size: 1.875em;
 }
 
@@ -629,23 +632,26 @@ form .submit_button input {
     font-size: 1.5em;
 }
 
-.articles .card_article a.image-popup-no-margins {
+.articles .card_article a.image-popup-no-margins,
+.contenu_produit .card_article a.image-popu-no-margins {
     cursor: zoom-in;
 }
 
 /* POPUP photo article
 /* padding-bottom and top for image */
 .mfp-no-margins img.mfp-img {
-	padding: 0;
+    padding: 0;
 }
+
 /* position of shadow behind the image */
 .mfp-no-margins .mfp-figure:after {
-	top: 0;
-	bottom: 0;
+    top: 0;
+    bottom: 0;
 }
+
 /* padding for main container */
 .mfp-no-margins .mfp-container {
-	padding: 0;
+    padding: 0;
 }
 
 
@@ -654,24 +660,25 @@ uncomment this part if you haven't added this code anywhere else */
 
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
-	opacity: 0;
-	-webkit-backface-visibility: hidden;
-	-webkit-transition: all 0.3s ease-out; 
-	-moz-transition: all 0.3s ease-out; 
-	-o-transition: all 0.3s ease-out; 
-	transition: all 0.3s ease-out;
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .mfp-with-zoom.mfp-ready .mfp-container {
-		opacity: 1;
-}
-.mfp-with-zoom.mfp-ready.mfp-bg {
-		opacity: 0.8;
+    opacity: 1;
 }
 
-.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+
+.mfp-with-zoom.mfp-removing .mfp-container,
 .mfp-with-zoom.mfp-removing.mfp-bg {
-	opacity: 0;
+    opacity: 0;
 }
 
 /* -------- PAGE CONNEXION ----------- */
@@ -694,7 +701,9 @@ uncomment this part if you haven't added this code anywhere else */
     margin: 0 0 50px 150px;
 }
 
-table.commandes, th, td {
+table.commandes,
+th,
+td {
     border: 1px solid var(--color-stroke);
     border-collapse: collapse;
     color: var(--color-typo);
@@ -715,6 +724,97 @@ table.commandes td {
 .information p {
     color: var(--color-typo);
     font-size: 1.875em;
+    margin-bottom: 50px;
+}
+
+/* -------- PAGE COMMANDE ----------- */
+
+.ma_commande .ma_commande_titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 350px;
+    margin-bottom: 70px;
+    text-align: center;
+    color: var(--color-typo);
+}
+
+.ma_commande .ma_commande_titre .frais {
+    display: flex;
+    align-items: center;
+}
+
+.ma_commande .ma_commande_titre .frais p {
+    font-size: 1.875em;
+    margin-left: 40px;
+}
+
+.ma_commande_contenu {
+    display: flex;
+    margin-bottom: 70px;
+}
+
+.contenu_produit {
+    text-align: center;
+}
+
+.contenu_produit a {
+    color: var(--color-typo);
+    font-size: 1.875em;
+}
+
+.contenu_produit .card_article {
+    width: 304px;
+    height: 415px;
+    margin: 50px 150px 20px;
+    text-align: center;
+    color: var(--color-typo);
+    background: var(--color-white);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contenu_info {
+    display: flex;
+    align-items: center;
+}
+
+.contenu_info .info_input {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.info_input label {
+    color: var(--color-typo);
+    font-size: 1.875em;
+    margin-right: 100px;
+}
+
+.info_input input {
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.livraison {
+    margin-bottom: 150px;
+}
+
+.livraison p {
+    text-align: center;
+    font-size: 1.875em;
+    color: var(--color-typo);
+    margin-bottom: 80px;
+}
+
+.livraison form .input_form {
+    width: 100%;
+    height: 80px;
+    background: transparent;
+    font-size: 40px;
+    padding-left: 30px;
     margin-bottom: 50px;
 }
 
@@ -780,7 +880,8 @@ footer a.fleche {
 
 @media screen and (max-width: 1350px) {
 
-    header nav ul li, header nav .btn_clean {
+    header nav ul li,
+    header nav .btn_clean {
         font-size: 16px;
     }
 
@@ -918,12 +1019,14 @@ footer a.fleche {
         margin-bottom: 20px;
     }
 
-    .select .select_categorie, .select .select_couleur {
+    .select .select_categorie,
+    .select .select_couleur {
         display: flex;
         flex-direction: column;
     }
 
-    table.commandes th, table.commandes td {
+    table.commandes th,
+    table.commandes td {
         font-size: 1em;
     }
 }
@@ -1002,7 +1105,8 @@ footer a.fleche {
         padding: 50px 0;
     }
 
-    .formulaire form .input_form, .formulaire form textarea {
+    .formulaire form .input_form,
+    .formulaire form textarea {
         font-size: 30px;
     }
 }
@@ -1112,7 +1216,8 @@ footer a.fleche {
         margin: 0 10px 80px 10px;
     }
 
-    .formulaire form .input_form, .formulaire form textarea {
+    .formulaire form .input_form,
+    .formulaire form textarea {
         font-size: 24px;
     }
 }

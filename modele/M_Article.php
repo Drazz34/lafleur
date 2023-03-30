@@ -17,6 +17,22 @@ class M_Article
     }
 
     /**
+     * Retourne les informations  d'un article sous la forme d'un tableau associatif
+     * 
+     * @return array
+     */
+
+    public static function afficheUnArticle($id)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $req = $pdo->prepare("SELECT * FROM lf_articles WHERE lf_articles.id = :id;");
+        $req->bindParam(":id", $id);
+        $req->execute();
+        $unArticle = $req->fetch(PDO::FETCH_ASSOC);
+        return $unArticle;
+    }
+
+    /**
      * Retourne tous les articles d'une catégorie sous la forme d'un tableau associatif
      * 
      * @return array
@@ -39,13 +55,13 @@ class M_Article
      * 
      * @return array
      */
-        
+
     public static function afficheLesArticlesParCouleur($id)
     {
         $pdo = AccesDonnees::getPdo();
-        $req = $pdo->prepare("SELECT * FROM lf_articles
-        JOIN lf_couleurs ON lf_articles.couleur_id = lf_couleurs.id
-        WHERE lf_couleurs.id = :id;");
+        $req = $pdo->prepare("SELECT lf_articles.id, lf_articles.nom, lf_articles.prix_unitaire, lf_articles.photo, lf_articles.alt, lf_articles.couleur_id, lf_couleurs.id as couleur_id, lf_couleurs.nom_couleur as couleur_nom FROM lf_articles
+    JOIN lf_couleurs ON lf_articles.couleur_id = lf_couleurs.id
+    WHERE lf_couleurs.id = :id;");
         $req->bindParam(":id", $id);
         $req->execute();
         $articlesParCouleur = $req->fetchAll(PDO::FETCH_ASSOC);

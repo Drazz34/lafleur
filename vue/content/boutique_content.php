@@ -69,7 +69,7 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <a href="<?php echo $url_commande; ?>">Commander</a>
+                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
 
                 </div>
 
@@ -90,7 +90,7 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <a href="">Commander</a>
+                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
 
                 </div>
 
@@ -111,7 +111,7 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <a href="">Commander</a>
+                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
 
                 </div>
 
@@ -132,7 +132,7 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <a href="">Commander</a>
+                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
 
                 </div>
 
