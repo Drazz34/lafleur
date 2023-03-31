@@ -29,21 +29,3 @@ $(document).ready(function () {
     });
 });
 
-
-$(document).ready(function() {
-  $('#livraison_cp').on('change', function() {
-    var cp = $(this).val();
-    if (cp) {
-      $.ajax({
-        url: 'get_villes.php',
-        method: 'POST',
-        data: { cp: cp },
-        success: function(data) {
-          $('#livraison_ville').html(data);
-        }
-      });
-    } else {
-      $('#livraison_ville').html('<option value="">-- Ville --</option>');
-    }
-  });
-});

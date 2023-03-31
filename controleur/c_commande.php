@@ -21,10 +21,8 @@ if (!empty($_SESSION['client'])) {
 }
 
 $codesPostaux = M_Commande::afficheCP();
-$codesPostaux1 = M_Commande::afficheCP1();
 
 $villesLivrables = M_Commande::afficheVille();
 
 var_dump($codesPostaux);
 var_dump($villesLivrables);
-var_dump($codesPostaux1);

@@ -31,21 +31,6 @@ class M_Commande
         return $codesPostaux;
     }
 
-    public static function afficheCP1()
-{
-    $pdo = AccesDonnees::getPdo();
-    $stmt = $pdo->prepare("SELECT cp.code_postal, v.nom_ville AS ville_nom
-                           FROM lf_codes_postaux cp
-                           JOIN lf_adresses a ON cp.id = a.code_postal_id
-                           JOIN lf_villes v ON a.ville_id = v.id
-                           WHERE cp.id=1 OR cp.id=2
-                           GROUP BY cp.code_postal
-                           ORDER BY cp.code_postal");
-    $stmt->execute();
-    $codesPostaux1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $codesPostaux1;
-}
-
     // Affiche les villes disponibles pour livraison
 
     public static function afficheVille()
