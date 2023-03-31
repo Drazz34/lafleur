@@ -28,14 +28,12 @@ if (!empty($_POST['modif_submit'])) {
     $ancienMotDePasse = $_POST['modif_ancien_password'];
     $nouveauMotDePasse = $_POST['modif_password'];
 
-    // Vérifier si le mot de passe actuel est correct avant de mettre à jour le mot de passe
-    // Vérification que l'ancien mot de passe est correct
     $client = M_Client::trouverClientParId($_SESSION['client']['id']);
     // Si le mot de passe actuel est correct et que le nouveau mot de passe n'est pas vide, mettez à jour le mot de passe
     if (password_verify($ancienMotDePasse, $client['mot_de_passe']) && !empty($nouveauMotDePasse)) {
         $motDePasse = password_hash($nouveauMotDePasse, PASSWORD_DEFAULT);
     } else {
-        // echo "<script>alert('Le mot de passe actuel est incorrect.');</script>";
+        echo "<script>alert('Le mot de passe actuel est incorrect.');</script>";
         $motDePasse = $client['mot_de_passe'];
     }
 

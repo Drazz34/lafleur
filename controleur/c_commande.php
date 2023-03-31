@@ -1,7 +1,8 @@
 <?php
 
-include './modele/M_Article.php';
+include_once './modele/M_Article.php';
 include_once "./modele/M_Profil.php";
+include_once "./modele/M_Commande.php";
 
 if (isset($_GET['article_id'])) {
     $article_id = $_GET['article_id'];
@@ -18,3 +19,12 @@ if (!empty($_SESSION['client'])) {
     $client = $_SESSION['client'];
     $adresse = M_Profil::adresseClient($client['id']);
 }
+
+$codesPostaux = M_Commande::afficheCP();
+$codesPostaux1 = M_Commande::afficheCP1();
+
+$villesLivrables = M_Commande::afficheVille();
+
+var_dump($codesPostaux);
+var_dump($villesLivrables);
+var_dump($codesPostaux1);

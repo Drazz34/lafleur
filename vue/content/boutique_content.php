@@ -1,10 +1,3 @@
-<?php // Gestion de la session pour le bouton "Commander"
-    if (isset($_SESSION['client'])) {
-        $url_commande = "index.php?page=commande";
-    } else {
-        $url_commande = "index.php?page=connexion";
-    } ?>
-
 <section>
 
     <h1 class="h1 titre_boutique">Notre boutique en ligne</h1>

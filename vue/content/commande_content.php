@@ -83,14 +83,106 @@
 
         <label for="livraison_cp"></label>
 
-        <input type="text" name="livraison_cp" id="livraison_cp" class="input_form" value="<?= $adresse['code_postal'] ?>" maxlength="5">
+        <select name="livraison_cp" id="livraison_cp">
+            <option value="">-- Code postal --</option>
+
+            <?php foreach ($codesPostaux as $cp) : ?>
+                <option value="<?= $cp ?>"><?= $cp ?></option>
+            <?php endforeach ?>
+
+        </select>
 
         <label for="livraison_ville"></label>
-
-        <input type="text" name="livraison_ville" id="livraison_ville" class="input_form" value="<?= $adresse['nom_ville'] ?>">
+        <select name="livraison_ville" id="livraison_ville">
+            <option value="">-- Ville --</option>
+            <?php foreach ($villesLivrables as $ville) : ?>
+                <option value="<?= $ville ?>"><?= $ville ?></option>
+            <?php endforeach ?>
+        </select>
 
         <input type="submit" class="btn_lien input_submit" name="paiement_submit" value="Paiement">
 
     </form>
 
 </section>
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cp = $_POST['livraison_cp'];
+
+    // Connexion à la base de données
+    $pdo = AccesDonnees::getPdo();
+
+    // Requête pour récupérer les villes correspondantes au code postal
+    $stmt = $pdo->prepare("SELECT v.nom_ville
+                           FROM lf_villes v
+                           JOIN lf_adresses a ON v.id = a.ville_id
+                           JOIN lf_codes_postaux cp ON a.code_postal_id = cp.id
+                           WHERE cp.code_postal = :cp
+                           ORDER BY v.nom_ville");
+    $stmt->bindParam(':cp', $cp);
+    $stmt->execute();
+
+    // Récupération des résultats de la requête
+    $villes = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // Construction de la liste déroulante des villes
+    if (!empty($villes)) {
+        $options = '';
+        foreach ($villes as $ville) {
+            $options .= '<option value="' . $ville . '">' . $ville . '</option>';
+        }
+    } else {
+        $options = '<option value="">-- Aucune ville disponible --</option>';
+    }
+
+    // Mise en mémoire tampon de la sortie de PHP
+    ob_start();
+    echo $options;
+    $ville_options = ob_get_clean();
+}
+
+?>
+
+<label for="livraison_cp"></label>
+<select name="livraison_cp" id="livraison_cp">
+  <option value="">-- Code postal --</option>
+  <?php foreach ($codesPostaux1 as $cp) : ?>
+    <option value="<?= $cp['code_postal'] ?>"><?= $cp['code_postal'] ?></option>
+  <?php endforeach ?>
+</select>
+
+<label for="livraison_ville"></label>
+<select name="livraison_ville" id="livraison_ville">
+  <option value="">-- Ville --</option>
+  <?php if (isset($ville_options)) : ?>
+    <?= $ville_options ?>
+  <?php endif ?>
+</select>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    var livraison_cp = document.getElementById('livraison_cp');
+    var livraison_ville = document.getElementById('livraison_ville');
+
+    livraison_cp.addEventListener('change', function() {
+      var cp = this.value;
+      if (cp) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', window.location.href);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            livraison_ville.innerHTML = xhr.responseText;
+          } else {
+            livraison_ville.innerHTML = '<option value="">-- Ville --</option>';
+          }
+        };
+        xhr.send('livraison_cp=' + cp);
+      } else {
+        livraison_ville.innerHTML = '<option value="">-- Ville --</option>';
+      }
+    });
+  });
+</script>

@@ -3,6 +3,13 @@
 include './modele/M_Categorie.php';
 include './modele/M_Article.php';
 
+// Gestion de la session pour le bouton "Commander"
+if (isset($_SESSION['client'])) {
+    $url_commande = "index.php?page=commande";
+} else {
+    $url_commande = "index.php?page=connexion";
+}
+
 // Variable pour afficher tous les articles
 $articles = M_Article::afficheTousLesArticles();
 
