@@ -818,6 +818,27 @@ table.commandes td {
     margin-bottom: 50px;
 }
 
+.livraison form .date_livraison {
+    display: flex;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    margin-bottom: 100px;
+}
+
+.livraison form .date_livraison label,
+.livraison form .date_livraison input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.livraison form .date_livraison label {
+    font-size: 40px;
+}
+
+.livraison form .date_livraison .input_date {
+    margin-bottom: 0;
+}
+
 /* -------- FOOTER ----------- */
 
 footer {
@@ -834,6 +855,11 @@ footer {
 footer img.logo_footer {
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
     margin-right: 40px;
+    transition: transform 0.7s ease;
+}
+
+footer img.logo_footer:hover {
+    transform: rotate(360deg);
 }
 
 footer .footer_left {
@@ -1029,6 +1055,10 @@ footer a.fleche {
     table.commandes td {
         font-size: 1em;
     }
+
+    .livraison form .date_livraison label {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -1108,6 +1138,23 @@ footer a.fleche {
     .formulaire form .input_form,
     .formulaire form textarea {
         font-size: 30px;
+    }
+
+    .contenu_produit {
+        margin-bottom: 50px;
+    }
+
+    section.ma_commande .ma_commande_titre {
+        margin-bottom: 0;
+    }
+
+    .ma_commande_contenu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenu_info .info_input div {
+        margin-bottom: 15px;
     }
 }
 
@@ -1217,7 +1264,21 @@ footer a.fleche {
     }
 
     .formulaire form .input_form,
-    .formulaire form textarea {
+    .formulaire form textarea,
+    .livraison form .date_livraison label {
         font-size: 24px;
+    }
+
+    .ma_commande .ma_commande_titre .frais p {
+        font-size: 1.5em;
+    }
+
+    .livraison form .date_livraison {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .livraison form .date_livraison .input_date {
+        margin-top: 20px;
     }
 }

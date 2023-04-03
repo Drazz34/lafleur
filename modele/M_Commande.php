@@ -31,14 +31,40 @@ class M_Commande
         return $codesPostaux;
     }
 
-    // Affiche les villes disponibles pour livraison
-
-    public static function afficheVille()
+    // Affiche les villes disponibles pour livraison pour le premier code postal
+    public static function afficheVilleCp1()
     {
         $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT nom_ville FROM lf_villes WHERE livrable=1");
+        $stmt = $pdo->prepare("SELECT DISTINCT nom_ville FROM lf_villes
+        JOIN lf_adresses ON lf_villes.id = lf_adresses.ville_id
+        JOIN lf_codes_postaux ON lf_codes_postaux.id = lf_adresses.code_postal_id
+        WHERE livrable=1 AND code_postal = (SELECT code_postal FROM lf_codes_postaux WHERE id=1)");
         $stmt->execute();
-        $villes = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        return $villes;
+        $villesCp1 = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $villesCp1;
     }
+
+    // Affiche les villes disponibles pour livraison pour le deuxième code postal
+    public static function afficheVilleCp2()
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT DISTINCT nom_ville FROM lf_villes
+        JOIN lf_adresses ON lf_villes.id = lf_adresses.ville_id
+        JOIN lf_codes_postaux ON lf_codes_postaux.id = lf_adresses.code_postal_id
+        WHERE livrable=1 AND code_postal = (SELECT code_postal FROM lf_codes_postaux WHERE id=2)");
+        $stmt->execute();
+        $villesCp2 = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $villesCp2;
+    }
+
+    // Affiche les frais de livraison
+    public static function afficheFraisLivraison()
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT frais FROM lf_frais_livraison");
+        $stmt->execute();
+        $frais_livraison = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        return $frais_livraison;
+    }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-include_once './modele/M_Article.php';
+include_once "./modele/M_Article.php";
 include_once "./modele/M_Profil.php";
 include_once "./modele/M_Commande.php";
 
@@ -22,7 +22,12 @@ if (!empty($_SESSION['client'])) {
 
 $codesPostaux = M_Commande::afficheCP();
 
-$villesLivrables = M_Commande::afficheVille();
+$villesCp1 = M_Commande::afficheVilleCp1();
+$villesCp2 = M_Commande::afficheVilleCp2();
 
-var_dump($codesPostaux);
-var_dump($villesLivrables);
+$frais_livraison = M_Commande::afficheFraisLivraison();
+
+// var_dump($codesPostaux);
+// var_dump($villesCp1);
+// var_dump($villesCp2);
+var_dump($frais_livraison);
