@@ -798,6 +798,11 @@ table.commandes td {
     font-size: 20px;
 }
 
+.info_input div {
+    display: flex;
+    justify-content: space-between;
+}
+
 .livraison {
     margin-bottom: 150px;
 }
@@ -1059,6 +1064,10 @@ footer a.fleche {
     .livraison form .date_livraison label {
         font-size: 30px;
     }
+
+    .info_input div {
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 880px) {
@@ -1155,6 +1164,10 @@ footer a.fleche {
 
     .contenu_info .info_input div {
         margin-bottom: 15px;
+    }
+
+    .info_input div {
+        flex-direction: row;
     }
 }
 
