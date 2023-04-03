@@ -113,10 +113,7 @@ class M_Commande
         $stmt->bindParam(":quantite", $quantite);
         $stmt->bindParam(":adresse_livraison", $adresse_id);
         $stmt->bindParam(":date_livraison", $livraison_date);
-        if ($frais_livraison_id == 0) {
-            // Si le frais de livraison n'a pas été déterminé, on choisit le frais payant par défaut
-            $frais_livraison_id = 2;
-        }
+        
         $stmt->bindParam(":frais_livraison_id", $frais_livraison_id);
         // $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
         $stmt->execute();

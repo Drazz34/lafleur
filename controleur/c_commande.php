@@ -38,17 +38,11 @@ if (isset($_POST['paiement_submit'])) {
     $livraison_ville = $_POST['livraison_ville'];
     $livraison_date = $_POST['livraison_date'];
     $prix_total = $_POST['prix_total'];
+    $frais_livraison_id = $_POST['frais_livraison_id'];
 
     // Obtenir les frais de livraison gratuits et payants
     $frais_gratuit = $frais_livraison[0];
     $frais_payant = $frais_livraison[1];
-
-    // Déterminer le frais_livraison_id en fonction du montant total de la commande
-    if ($prix_total >= 50) {
-        $frais_livraison_id = 1; // Livraison gratuite (ID 1)
-    } else {
-        $frais_livraison_id = 2; // Livraison payante (ID 2)
-    }
 
     // Insérer l'adresse de livraison dans la table lf_adresses et récupérer l'ID de la nouvelle adresse
     $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);

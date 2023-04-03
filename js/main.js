@@ -87,13 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
         prixArticleInput.value = prixArticle.toFixed(2);
 
         // Met à jour les frais de livraison en fonction du prix total des articles
-        let frais_livraison_id = 0; // 0 pour "non déterminé"
+
         if (prixArticle >= 50) {
             livraisonInput.value = fraisLivraison.gratuit;
-            frais_livraison_id = 1; // 1 pour "livraison gratuite"
+
         } else {
             livraisonInput.value = fraisLivraison.payant;
-            frais_livraison_id = 2; // 2 pour "livraison payante"
+
         }
 
         // Calcule le prix total en ajoutant le prix total des articles aux frais de livraison
@@ -106,16 +106,32 @@ document.addEventListener('DOMContentLoaded', function () {
     // Appelle la fonction pour mettre à jour les champs de livraison et de prix total une première fois
     updateLivraisonEtPrixTotal();
 
+    // Appelle la fonction pour initialiser le champ frais_livraison_id une première fois
+    updateFraisLivraisonId();
+
     // Ajoute un écouteur d'événement pour mettre à jour les champs lorsque la quantité d'articles change
     quantiteInput.addEventListener('input', updateLivraisonEtPrixTotal);
 });
+
+function updateFraisLivraisonId() {
+    const prix = parseFloat(document.getElementById('prix_article').value);
+    const fraisLivraisonIdField = document.getElementById('frais_livraison_id');
+
+    if (prix >= 50) {
+        fraisLivraisonIdField.value = 1; // Livraison gratuite (ID 1)
+    } else {
+        fraisLivraisonIdField.value = 2; // Livraison payante (ID 2)
+    }
+}
 
 function updateQuantite() {
     var quantite_visible = document.getElementById('quantite_visible');
     var quantite = document.getElementById('quantite');
     quantite.value = quantite_visible.value;
+    updateFraisLivraisonId();
 }
 
 // Ajoutez ces lignes pour ajouter un écouteur d'événement à l'élément 'quantite_visible'
 var quantite_visible = document.getElementById('quantite_visible');
 quantite_visible.addEventListener('input', updateQuantite);
+

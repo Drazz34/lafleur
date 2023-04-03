@@ -74,8 +74,9 @@
         <input type="hidden" name="quantite" id="quantite" value="1" min="1" oninput="updateQuantite()">
         <input type="hidden" name="livraison" id="livraison">
         <input type="hidden" name="prix_total" id="prix_total">
-        <!-- Élément caché pour stocker les frais de livraison -->
+        <!-- Élément caché pour stocker le frais_livraison_id -->
         <input type="hidden" name="frais_livraison_id" id="frais_livraison_id">
+        
         <input type="hidden" id="frais_gratuit" value="<?= $frais_livraison[0] ?>">
         <input type="hidden" id="frais_payant" value="<?= $frais_livraison[1] ?>">
 
