@@ -24,7 +24,7 @@
 
                 <h3 class="h3"><?= $article['nom'] ?></h3>
 
-                <p><?= $article['prix_unitaire'] ?> €</p>
+                <p class="article_prix_unitaire"><?= $article['prix_unitaire'] ?> €</p>
 
             </div>
 
@@ -37,24 +37,24 @@
             <div class="info_input">
 
                 <div>
-                    <label for="quantite">Quantité</label>
-                    <input type="number" name="quantite" id="quantite" value="1" min="1">
+                    <label for="quantite_visible">Quantité</label>
+                    <input type="number" name="quantite" id="quantite_visible" value="1" min="1" oninput="updateQuantite()">
                 </div>
 
                 <div>
                     <label for="prix_article">Prix</label>
-                    <input type="number" name="prix_article" id="prix_article" disabled>
+                    <input type="text" name="prix_article" id="prix_article" readonly>
                 </div>
 
 
                 <div>
                     <label for="livraison">Livraison</label>
-                    <input type="number" name="livraison" id="livraison" disabled>
+                    <input type="text" name="livraison" id="livraison" readonly>
                 </div>
 
                 <div>
                     <label for="prix_total">Prix total</label>
-                    <input type="number" name="prix_total" id="prix_total" disabled>
+                    <input type="text" name="prix_total" id="prix_total" readonly>
                 </div>
 
             </div>
@@ -71,10 +71,11 @@
 
     <form action="" method="post">
 
-        <input type="hidden" name="quantite" id="quantite" value="1" min="1">
+        <input type="hidden" name="quantite" id="quantite" value="1" min="1" oninput="updateQuantite()">
         <input type="hidden" name="livraison" id="livraison">
         <input type="hidden" name="prix_total" id="prix_total">
         <!-- Élément caché pour stocker les frais de livraison -->
+        <input type="hidden" name="frais_livraison_id" id="frais_livraison_id">
         <input type="hidden" id="frais_gratuit" value="<?= $frais_livraison[0] ?>">
         <input type="hidden" id="frais_payant" value="<?= $frais_livraison[1] ?>">
 

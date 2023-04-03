@@ -62,13 +62,13 @@ function updateVilleSelect() {
 // Attends que le contenu du document soit chargé avant d'exécuter le code
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionne les éléments du formulaire pour les utiliser ultérieurement
-    const quantiteInput = document.getElementById('quantite');
+    const quantiteInput = document.getElementById('quantite_visible');
     const livraisonInput = document.getElementById('livraison');
     const prixTotalInput = document.getElementById('prix_total');
     const prixArticleInput = document.getElementById('prix_article');
 
     // Récupère le prix unitaire de l'article à partir du contenu du paragraphe dans la div '.card_article'
-    const prixUnitaire = parseFloat(document.querySelector('.card_article p').textContent);
+    const prixUnitaire = parseFloat(document.querySelector('.card_article .article_prix_unitaire').textContent);
 
     // Récupère les frais de livraison à partir des éléments cachés et les stocke dans un objet
     const fraisLivraison = {
@@ -87,10 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
         prixArticleInput.value = prixArticle.toFixed(2);
 
         // Met à jour les frais de livraison en fonction du prix total des articles
+        let frais_livraison_id = 0; // 0 pour "non déterminé"
         if (prixArticle >= 50) {
             livraisonInput.value = fraisLivraison.gratuit;
+            frais_livraison_id = 1; // 1 pour "livraison gratuite"
         } else {
             livraisonInput.value = fraisLivraison.payant;
+            frais_livraison_id = 2; // 2 pour "livraison payante"
         }
 
         // Calcule le prix total en ajoutant le prix total des articles aux frais de livraison
@@ -106,3 +109,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ajoute un écouteur d'événement pour mettre à jour les champs lorsque la quantité d'articles change
     quantiteInput.addEventListener('input', updateLivraisonEtPrixTotal);
 });
+
+function updateQuantite() {
+    var quantite_visible = document.getElementById('quantite_visible');
+    var quantite = document.getElementById('quantite');
+    quantite.value = quantite_visible.value;
+}
+
+// Ajoutez ces lignes pour ajouter un écouteur d'événement à l'élément 'quantite_visible'
+var quantite_visible = document.getElementById('quantite_visible');
+quantite_visible.addEventListener('input', updateQuantite);

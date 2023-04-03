@@ -5,15 +5,36 @@ class M_Commande
 
     // Affiche les informations des commandes d'un client
 
+    // public static function afficherCommandes($idClient)
+    // {
+    //     $pdo = Accesdonnees::getPdo();
+    //     $stmt = $pdo->prepare("SELECT lf_commandes.id, lf_commandes.quantite * lf_articles.prix_unitaire + IF(lf_commandes.frais_livraison_id = 1, 0, 2.99) AS prix, lf_articles.nom AS nom, DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande
+    //     FROM lf_clients
+    //     JOIN lf_commandes ON lf_clients.id = lf_commandes.client_id
+    //     JOIN lf_articles ON lf_commandes.article_id = lf_articles.id
+    //     JOIN lf_frais_livraison ON lf_frais_livraison.id = lf_commandes.frais_livraison_id
+    //     WHERE lf_clients.id = :clientId
+    //     ORDER BY lf_commandes.id");
+    //     $stmt->bindParam(":clientId", $idClient);
+    //     $stmt->execute();
+    //     $lesCommandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //     return $lesCommandes;
+    // }
+
     public static function afficherCommandes($idClient)
     {
         $pdo = Accesdonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT lf_commandes.id, lf_articles.nom AS nom, DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande, lf_articles.prix_unitaire AS prix
-        FROM lf_clients
-        JOIN lf_commandes ON lf_clients.id = lf_commandes.client_id
-        JOIN lf_articles ON lf_commandes.article_id = lf_articles.id
-        WHERE lf_clients.id = :clientId
-        ORDER BY lf_commandes.id");
+        $stmt = $pdo->prepare("SELECT lf_commandes.id, 
+                                      lf_commandes.quantite * lf_articles.prix_unitaire 
+                                      + CASE WHEN lf_commandes.frais_livraison_id = 1 THEN 0 ELSE 2.99 END AS prix, 
+                                      lf_articles.nom AS nom, 
+                                      DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande
+                                FROM lf_clients
+                                JOIN lf_commandes ON lf_clients.id = lf_commandes.client_id
+                                JOIN lf_articles ON lf_commandes.article_id = lf_articles.id
+                                JOIN lf_frais_livraison ON lf_frais_livraison.id = lf_commandes.frais_livraison_id
+                                WHERE lf_clients.id = :clientId
+                                ORDER BY lf_commandes.id");
         $stmt->bindParam(":clientId", $idClient);
         $stmt->execute();
         $lesCommandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,4 +88,37 @@ class M_Commande
         return $frais_livraison;
     }
 
+    // Ajoute l'adresse de livraison
+    public static function ajouterAdresseLivraison($rue, $code_postal, $ville)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("INSERT INTO lf_adresses (rue, code_postal_id, ville_id) VALUES (:rue, (SELECT id FROM lf_codes_postaux WHERE code_postal = :code_postal), (SELECT id FROM lf_villes WHERE nom_ville = :ville))");
+        $stmt->bindParam(":rue", $rue);
+        $stmt->bindParam(":code_postal", $code_postal);
+        $stmt->bindParam(":ville", $ville);
+        $stmt->execute();
+
+        // Récupérer l'ID de la nouvelle adresse
+        $adresse_id = $pdo->lastInsertId();
+        return $adresse_id;
+    }
+
+    // Ajoute une nouvelle commande
+    public static function ajouterCommande($client_id, $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("INSERT INTO lf_commandes (client_id, article_id, quantite, adresse_livraison, date_commande, date_livraison_souhaitee, frais_livraison_id) VALUES (:client_id, :article_id, :quantite, :adresse_livraison, CURDATE(), :date_livraison, :frais_livraison_id)");
+        $stmt->bindParam(":client_id", $client_id);
+        $stmt->bindParam(":article_id", $article_id);
+        $stmt->bindParam(":quantite", $quantite);
+        $stmt->bindParam(":adresse_livraison", $adresse_id);
+        $stmt->bindParam(":date_livraison", $livraison_date);
+        if ($frais_livraison_id == 0) {
+            // Si le frais de livraison n'a pas été déterminé, on choisit le frais payant par défaut
+            $frais_livraison_id = 2;
+        }
+        $stmt->bindParam(":frais_livraison_id", $frais_livraison_id);
+        // $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
+        $stmt->execute();
+    }
 }

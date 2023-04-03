@@ -27,7 +27,36 @@ $villesCp2 = M_Commande::afficheVilleCp2();
 
 $frais_livraison = M_Commande::afficheFraisLivraison();
 
-// var_dump($codesPostaux);
-// var_dump($villesCp1);
-// var_dump($villesCp2);
-var_dump($frais_livraison);
+// Au paiement
+if (isset($_POST['paiement_submit'])) {
+    // Récupérer les données du formulaire
+    $quantite = $_POST['quantite'];
+    $livraison_nom = $_POST['livraison_nom'];
+    $livraison_prenom = $_POST['livraison_prenom'];
+    $livraison_rue = $_POST['livraison_rue'];
+    $livraison_cp = $_POST['livraison_cp'];
+    $livraison_ville = $_POST['livraison_ville'];
+    $livraison_date = $_POST['livraison_date'];
+    $prix_total = $_POST['prix_total'];
+
+    // Obtenir les frais de livraison gratuits et payants
+    $frais_gratuit = $frais_livraison[0];
+    $frais_payant = $frais_livraison[1];
+
+    // Déterminer le frais_livraison_id en fonction du montant total de la commande
+    if ($prix_total >= 50) {
+        $frais_livraison_id = 1; // Livraison gratuite (ID 1)
+    } else {
+        $frais_livraison_id = 2; // Livraison payante (ID 2)
+    }
+
+    // Insérer l'adresse de livraison dans la table lf_adresses et récupérer l'ID de la nouvelle adresse
+    $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);
+
+    // Insérer la commande dans la table lf_commandes
+    M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id);
+
+    // Rediriger vers une page de confirmation ou une autre page appropriée
+    header('Location: index.php?page=profil');
+    exit();
+}

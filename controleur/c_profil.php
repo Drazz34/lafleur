@@ -8,6 +8,7 @@ if (!empty($_SESSION['client'])) {
     $client = $_SESSION['client'];
     $commandesClient = M_Commande::afficherCommandes($client['id']);
     $adresse = M_Profil::adresseClient($client['id']);
+    $fraisLivraison = M_Commande::afficheFraisLivraison($client['id']);
 }
 
 // $client = M_Client::trouverClientParId($_SESSION['client']['id']);
