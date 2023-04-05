@@ -16,7 +16,7 @@
                 echo '<li><a href="index.php?page=profil">Mon profil</a></li>';
                 echo '<form action="index.php" method="post">
                 <input type="hidden" name="deconnexion" value="true">
-                <button type="submit" class="btn_clean" onclick="return confirm("Êtes-vous sûr(e) de vouloir vous déconnecter ?")">Déconnexion</button>
+                <button type="submit" class="btn_clean" onclick="return confirm(\'Êtes-vous sûr(e) de vouloir vous déconnecter ?\')">Déconnexion</button>
             </form>';
             } ?>
         </ul>

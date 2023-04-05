@@ -143,3 +143,84 @@ var quantite_visible = document.getElementById('quantite_visible');
 if (quantite_visible) {
     quantite_visible.addEventListener('input', updateQuantite);
 }
+
+// Validation de l'email à l'inscription
+
+function validateEmail() {
+    const emailInput = document.getElementById("creation_email");
+    const emailError = document.getElementById("email_error");
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$/;
+
+    if (emailRegex.test(emailInput.value)) {
+        emailError.style.display = "none";
+        return true;
+    } else {
+        emailError.style.display = "block";
+        scrollToEmailInput();
+        return false;
+    }
+}
+
+function scrollToEmailInput() {
+    const emailInput = document.getElementById("creation_email");
+    emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// Validation du mot de passe à l'inscription
+
+function validatePassword() {
+    const passwordInput = document.getElementById("creation_password");
+    const passwordError = document.getElementById("password_error");
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (passwordInput.value.length >= 8 && passwordRegex.test(passwordInput.value)) {
+        passwordError.style.display = "none";
+        return true;
+    } else {
+        passwordError.style.display = "block";
+        scrollToPasswordInput();
+        return false;
+    }
+}
+
+function scrollToPasswordInput() {
+    const passwordInput = document.getElementById("creation_password");
+    passwordInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function validateForm(event) {
+    let validEmail = validateEmail();
+    let validPassword = validatePassword();
+
+    if (!validEmail || !validPassword) {
+        event.preventDefault();
+    }
+}
+
+// Ajoutez cet écouteur d'événement pour appeler la fonction validateForm lors de la soumission du formulaire
+// window.addEventListener("DOMContentLoaded", function () {
+//     const form = document.getElementById("creation_form");
+//     if (form) {
+//         form.addEventListener("submit", validateForm);
+//     }
+// });
+
+window.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("creation_form");
+    const emailInput = document.getElementById("creation_email");
+    const passwordInput = document.getElementById("creation_password");
+
+    if (form) {
+        form.addEventListener("submit", validateForm);
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener("blur", validateEmail);
+    }
+
+    if (passwordInput) {
+        passwordInput.addEventListener("blur", validatePassword);
+    }
+});
+
+
