@@ -83,19 +83,19 @@
 
         <label for="livraison_nom"></label>
 
-        <input type="text" name="livraison_nom" id="livraison_nom" class="input_form" value="<?= $client['nom'] ?>">
+        <input type="text" name="livraison_nom" id="livraison_nom" class="input_form" value="<?= $client['nom'] ?>" required>
 
         <label for="livraison_prenom"></label>
 
-        <input type="text" name="livraison_prenom" id="livraison_prenom" class="input_form" value="<?= $client['prenom'] ?>">
+        <input type="text" name="livraison_prenom" id="livraison_prenom" class="input_form" value="<?= $client['prenom'] ?>" required>
 
         <label for="livraison_rue"></label>
 
-        <input type="text" name="livraison_rue" id="livraison_rue" class="input_form" value="<?= $adresse['rue'] ?>">
+        <input type="text" name="livraison_rue" id="livraison_rue" class="input_form" value="<?= $adresse['rue'] ?>" required>
 
         <label for="livraison_cp"></label>
 
-        <select name="livraison_cp" id="livraison_cp" class="input_form" onchange="updateVilleSelect()" data-villes-cp1='<?php echo json_encode($villesCp1); ?>' data-villes-cp2='<?php echo json_encode($villesCp2); ?>' data-codes-postaux='<?php echo json_encode($codesPostaux); ?>'>
+        <select name="livraison_cp" id="livraison_cp" class="input_form" onchange="updateVilleSelect()" data-villes-cp1='<?php echo json_encode($villesCp1); ?>' data-villes-cp2='<?php echo json_encode($villesCp2); ?>' data-codes-postaux='<?php echo json_encode($codesPostaux); ?>' required>
             <option value="">-- Code postal --</option>
 
             <?php foreach ($codesPostaux as $cp) : ?>
@@ -106,14 +106,14 @@
 
         <label for="livraison_ville"></label>
 
-        <select name="livraison_ville" id="livraison_ville" class="input_form">
+        <select name="livraison_ville" id="livraison_ville" class="input_form" required>
             <option value="">-- Ville --</option>
             <!-- Affichage des villes via JS -->
         </select>
 
         <div class="date_livraison">
             <label for="livraison_date">Date de livraison</label>
-            <input type="date" name="livraison_date" id="livraison_date" class="input_form input_date">
+            <input type="date" name="livraison_date" id="livraison_date" class="input_form input_date" required>
         </div>
 
         <input type="submit" class="btn_lien input_submit" name="paiement_submit" value="Paiement">

@@ -59,59 +59,66 @@ function updateVilleSelect() {
     }
 }
 
-// Attends que le contenu du document soit chargé avant d'exécuter le code
-document.addEventListener('DOMContentLoaded', function () {
-    // Sélectionne les éléments du formulaire pour les utiliser ultérieurement
-    const quantiteInput = document.getElementById('quantite_visible');
-    const livraisonInput = document.getElementById('livraison');
-    const prixTotalInput = document.getElementById('prix_total');
-    const prixArticleInput = document.getElementById('prix_article');
+// Récupère les paramètres de la chaîne de requête de l'URL
+const params = new URLSearchParams(window.location.search);
 
-    // Récupère le prix unitaire de l'article à partir du contenu du paragraphe dans la div '.card_article'
-    const prixUnitaire = parseFloat(document.querySelector('.card_article .article_prix_unitaire').textContent);
+// Vérifie si la valeur de l'argument "page" est égale à "commande"
+if (params.get('page') === 'commande') {
 
-    // Récupère les frais de livraison à partir des éléments cachés et les stocke dans un objet
-    const fraisLivraison = {
-        gratuit: parseFloat(document.getElementById('frais_gratuit').value),
-        payant: parseFloat(document.getElementById('frais_payant').value)
-    };
+    // Attends que le contenu du document soit chargé avant d'exécuter le code
+    document.addEventListener('DOMContentLoaded', function () {
+        // Sélectionne les éléments du formulaire pour les utiliser ultérieurement
+        const quantiteInput = document.getElementById('quantite_visible');
+        const livraisonInput = document.getElementById('livraison');
+        const prixTotalInput = document.getElementById('prix_total');
+        const prixArticleInput = document.getElementById('prix_article');
 
-    // Fonction pour mettre à jour les champs de livraison et de prix total
-    function updateLivraisonEtPrixTotal() {
-        // Récupère la quantité d'articles sélectionnée
-        const quantite = parseInt(quantiteInput.value);
+        // Récupère le prix unitaire de l'article à partir du contenu du paragraphe dans la div '.card_article'
+        const prixUnitaire = parseFloat(document.querySelector('.card_article .article_prix_unitaire').textContent);
 
-        // Calcule le prix total des articles en multipliant la quantité par le prix unitaire
-        const prixArticle = quantite * prixUnitaire;
+        // Récupère les frais de livraison à partir des éléments cachés et les stocke dans un objet
+        const fraisLivraison = {
+            gratuit: parseFloat(document.getElementById('frais_gratuit').value),
+            payant: parseFloat(document.getElementById('frais_payant').value)
+        };
 
-        prixArticleInput.value = prixArticle.toFixed(2);
+        // Fonction pour mettre à jour les champs de livraison et de prix total
+        function updateLivraisonEtPrixTotal() {
+            // Récupère la quantité d'articles sélectionnée
+            const quantite = parseInt(quantiteInput.value);
 
-        // Met à jour les frais de livraison en fonction du prix total des articles
+            // Calcule le prix total des articles en multipliant la quantité par le prix unitaire
+            const prixArticle = quantite * prixUnitaire;
 
-        if (prixArticle >= 50) {
-            livraisonInput.value = fraisLivraison.gratuit;
+            prixArticleInput.value = prixArticle.toFixed(2);
 
-        } else {
-            livraisonInput.value = fraisLivraison.payant;
+            // Met à jour les frais de livraison en fonction du prix total des articles
 
+            if (prixArticle >= 50) {
+                livraisonInput.value = fraisLivraison.gratuit;
+
+            } else {
+                livraisonInput.value = fraisLivraison.payant;
+
+            }
+
+            // Calcule le prix total en ajoutant le prix total des articles aux frais de livraison
+            const prixTotal = prixArticle + parseFloat(livraisonInput.value);
+
+            // Met à jour le champ du prix total avec le nouveau prix total
+            prixTotalInput.value = prixTotal.toFixed(2);
         }
 
-        // Calcule le prix total en ajoutant le prix total des articles aux frais de livraison
-        const prixTotal = prixArticle + parseFloat(livraisonInput.value);
+        // Appelle la fonction pour mettre à jour les champs de livraison et de prix total une première fois
+        updateLivraisonEtPrixTotal();
 
-        // Met à jour le champ du prix total avec le nouveau prix total
-        prixTotalInput.value = prixTotal.toFixed(2);
-    }
+        // Appelle la fonction pour initialiser le champ frais_livraison_id une première fois
+        updateFraisLivraisonId();
 
-    // Appelle la fonction pour mettre à jour les champs de livraison et de prix total une première fois
-    updateLivraisonEtPrixTotal();
-
-    // Appelle la fonction pour initialiser le champ frais_livraison_id une première fois
-    updateFraisLivraisonId();
-
-    // Ajoute un écouteur d'événement pour mettre à jour les champs lorsque la quantité d'articles change
-    quantiteInput.addEventListener('input', updateLivraisonEtPrixTotal);
-});
+        // Ajoute un écouteur d'événement pour mettre à jour les champs lorsque la quantité d'articles change
+        quantiteInput.addEventListener('input', updateLivraisonEtPrixTotal);
+    });
+}
 
 function updateFraisLivraisonId() {
     const prix = parseFloat(document.getElementById('prix_article').value);
@@ -133,5 +140,6 @@ function updateQuantite() {
 
 // Ajoutez ces lignes pour ajouter un écouteur d'événement à l'élément 'quantite_visible'
 var quantite_visible = document.getElementById('quantite_visible');
-quantite_visible.addEventListener('input', updateQuantite);
-
+if (quantite_visible) {
+    quantite_visible.addEventListener('input', updateQuantite);
+}

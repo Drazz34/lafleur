@@ -43,15 +43,15 @@
 
     <h1 class="h1">Nous contacter</h1>
 
-    <form action="vue/content/contact_form_handler.php" method="post">
+    <form action="controleur/c_contact.php" method="post">
 
             <label for="contact_nom"></label>
 
-            <input type="text" name="nom" id="contact_nom" class="input_form" placeholder="Nom">
+            <input type="text" name="nom" id="contact_nom" class="input_form" placeholder="Nom" required>
 
             <label for="contact_email"></label>
 
-            <input type="email" name="email" id="contact_email" class="input_form" placeholder="Email">
+            <input type="email" name="email" id="contact_email" class="input_form" placeholder="Email" required>
 
             <label for="contact_telephone"></label>
 
@@ -59,7 +59,7 @@
 
             <label for="contact_message"></label>
 
-            <textarea name="message" id="contact_message" cols="30" rows="10" placeholder="Message"></textarea>
+            <textarea name="message" id="contact_message" cols="30" rows="10" placeholder="Message" required></textarea>
 
             <input type="submit" class="btn_lien input_submit" value="Envoyer">
 
