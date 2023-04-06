@@ -40,17 +40,31 @@ if (isset($_POST['paiement_submit'])) {
     $prix_total = $_POST['prix_total'];
     $frais_livraison_id = $_POST['frais_livraison_id'];
 
-    // Obtenir les frais de livraison gratuits et payants
-    $frais_gratuit = $frais_livraison[0];
-    $frais_payant = $frais_livraison[1];
+    // Vérifier la quantité disponible
+    $quantite_dispo = M_Commande::quantiteDispo($article_id);
 
-    // Insérer l'adresse de livraison dans la table lf_adresses et récupérer l'ID de la nouvelle adresse
-    $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);
+    if ($quantite_dispo < $quantite) {
 
-    // Insérer la commande dans la table lf_commandes
-    M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id);
+        // Afficher un message d'erreur
+        echo "Désolé, il n'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.";
 
-    // Rediriger vers une page de confirmation ou une autre page appropriée
-    header('Location: index.php?page=profil');
-    exit();
+    } else {
+
+        // Obtenir les frais de livraison gratuits et payants
+        $frais_gratuit = $frais_livraison[0];
+        $frais_payant = $frais_livraison[1];
+
+        // Insérer l'adresse de livraison dans la table lf_adresses et récupérer l'ID de la nouvelle adresse
+        $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);
+
+        // Insérer la commande dans la table lf_commandes
+        M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id);
+
+        // Mettre à jour la quantité de l'article dans la base de données
+        M_Article::MAJQuantiteArticle($article_id, $quantite);
+
+        // Rediriger vers la page profil
+        header('Location: index.php?page=profil');
+        exit();
+    }
 }

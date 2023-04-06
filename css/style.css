@@ -626,7 +626,8 @@ form .submit_button input {
     font-size: 1.875em;
 }
 
-.articles .card_article a {
+.articles .card_article a,
+.articles .card_article p.article_indispo {
     text-decoration: none;
     color: var(--color-typo);
     font-size: 1.5em;

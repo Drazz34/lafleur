@@ -59,7 +59,7 @@ class M_Article
     public static function afficheLesArticlesParCouleur($id)
     {
         $pdo = AccesDonnees::getPdo();
-        $req = $pdo->prepare("SELECT lf_articles.id, lf_articles.nom, lf_articles.prix_unitaire, lf_articles.photo, lf_articles.alt, lf_articles.couleur_id, lf_couleurs.id as couleur_id, lf_couleurs.nom_couleur as couleur_nom FROM lf_articles
+        $req = $pdo->prepare("SELECT lf_articles.id, lf_articles.nom, lf_articles.prix_unitaire, lf_articles.quantite_dispo, lf_articles.photo, lf_articles.alt, lf_articles.couleur_id, lf_couleurs.id as couleur_id, lf_couleurs.nom_couleur as couleur_nom FROM lf_articles
     JOIN lf_couleurs ON lf_articles.couleur_id = lf_couleurs.id
     WHERE lf_couleurs.id = :id;");
         $req->bindParam(":id", $id);
@@ -89,4 +89,21 @@ class M_Article
         $articlesParCategorieEtParCouleur = $req->fetchAll(PDO::FETCH_ASSOC);
         return $articlesParCategorieEtParCouleur;
     }
+
+    /**
+     * Met à jour la quantité de l'article acheté
+     *
+     * @param [type] $article_id
+     * @param [type] $quantite_achetee
+     * @return void
+     */
+    public static function MAJQuantiteArticle($article_id, $quantite_achetee)
+    {
+        $pdo = Accesdonnees::getPdo();
+        $stmt = $pdo->prepare("UPDATE lf_articles SET quantite_dispo = quantite_dispo - :quantite_achetee WHERE id = :article_id");
+        $stmt->bindParam(":quantite_achetee", $quantite_achetee, PDO::PARAM_INT);
+        $stmt->bindParam(":article_id", $article_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 }

@@ -118,4 +118,20 @@ class M_Commande
         // $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
         $stmt->execute();
     }
+
+    /**
+     * Permet de savoir la quantité restante d'un article
+     *
+     * @param int $article_id
+     * @return int
+     */
+    public static function quantiteDispo($article_id)
+    {
+        $pdo = Accesdonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT quantite_dispo FROM lf_articles WHERE id = :article_id");
+        $stmt->bindParam(":article_id", $article_id);
+        $stmt->execute();
+        $quantite_dispo = $stmt->fetch(PDO::FETCH_COLUMN);
+        return $quantite_dispo;
+    }
 }

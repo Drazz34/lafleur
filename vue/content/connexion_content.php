@@ -6,11 +6,11 @@
 
             <label for="connexion_email"></label>
 
-            <input type="email" name="email" id="connexion_email" class="input_form" placeholder="Email">
+            <input type="email" name="email" id="connexion_email" class="input_form" placeholder="Email" required>
 
             <label for="connexion_password"></label>
 
-            <input type="password" name="password" id="connexion_password" class="input_form" placeholder="Mot de passe">
+            <input type="password" name="password" id="connexion_password" class="input_form" placeholder="Mot de passe" required>
 
             <input type="submit" class="btn_lien input_submit" name="connexion_submit" value="Connexion">
 

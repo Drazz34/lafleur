@@ -62,7 +62,11 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
+                    <?php if ($article['quantite_dispo'] > 0) :?>
                     <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else :?>
+                    <p class="article_indispo">En rupture de stock</p>
+                    <?php endif; ?>
 
                 </div>
 
@@ -83,7 +87,11 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
+                    <?php if ($article['quantite_dispo'] > 0) :?>
                     <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else :?>
+                    <p class="article_indispo">En rupture de stock</p>
+                    <?php endif; ?>
 
                 </div>
 
@@ -104,7 +112,11 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
+                    <?php if ($article['quantite_dispo'] > 0) :?>
                     <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else :?>
+                    <p class="article_indispo">En rupture de stock</p>
+                    <?php endif; ?>
 
                 </div>
 
@@ -125,7 +137,11 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
+                    <?php if ($article['quantite_dispo'] > 0) :?>
                     <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else :?>
+                    <p class="article_indispo">En rupture de stock</p>
+                    <?php endif; ?>
 
                 </div>
 
