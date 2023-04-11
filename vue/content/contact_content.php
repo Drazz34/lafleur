@@ -5,7 +5,7 @@
         <h1 class="h1">Où nous trouver ?</h1>
 
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d720.3512690185747!2d5.362589729218779!3d43.76444956722677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca18e8a20a3245%3A0xe6d0d3156b109749!2sChem.%20des%20%C3%89coliers%2C%2084160%20Lourmarin!5e0!3m2!1sfr!2sfr!4v1678974359045!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11525.688212555693!2d5.3629586!3d43.7640971!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca192abcc42867%3A0x6fb3b59d3e84dcbe!2sLafleur!5e0!3m2!1sfr!2sfr!4v1681222426760!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     </div>
 
@@ -15,7 +15,7 @@
 
                 <img src="./img/accueil.svg" alt="Logo adresse" class="mr50">
 
-                <p class="fs48">Chemin des écoliers<br>84160 Lourmarin</p>
+                <p class="fs48">Place Ormeau<br>84160 Lourmarin</p>
 
             </div>
 
