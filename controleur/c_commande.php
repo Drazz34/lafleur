@@ -46,7 +46,8 @@ if (isset($_POST['paiement_submit'])) {
     if ($quantite_dispo < $quantite) {
 
         // Afficher un message d'erreur
-        echo "Désolé, il n'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.";
+        // echo "<p style='color:red;margin-left:20px;font-size:30px;'>Désolé, il n'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.</p>";
+        echo "<script>alert('Désolé, il n\'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.');</script>";
 
     } else {
 

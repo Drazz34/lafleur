@@ -113,7 +113,7 @@
 
         <div class="date_livraison">
             <label for="livraison_date">Date de livraison</label>
-            <input type="date" name="livraison_date" id="livraison_date" class="input_form input_date" required>
+            <input type="date" name="livraison_date" id="livraison_date" class="input_form input_date" min="<?= date('Y-m-d', strtotime('tomorrow')); ?>" required>
         </div>
 
         <input type="submit" class="btn_lien input_submit" name="paiement_submit" value="Paiement">
