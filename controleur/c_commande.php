@@ -42,12 +42,7 @@ if (isset($_POST['paiement_submit'])) {
     $prix_total = $_POST['prix_total'];
     $frais_livraison_id = $_POST['frais_livraison_id'];
 
-    // Vérifier si un lot a été gagné
-    $lot_gagne = M_Commande::lotGagne($client['id']);
-    $gain_loterie_id = ($lot_gagne) ? $lot_gagne['id'] : NULL;
-
-
-
+    
     // Vérifier la quantité disponible
     $quantite_dispo = M_Commande::quantiteDispo($article_id);
 

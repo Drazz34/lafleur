@@ -845,6 +845,72 @@ table.commandes td {
     margin-bottom: 0;
 }
 
+.machine {
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.slots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #555;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 50px;
+}
+
+.slot {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 5px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slot .symbol {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 1s;
+}
+
+#spinButton {
+    background-color: #555;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#spinButton:hover {
+    background-color: #666;
+}
+
+.message {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
 /* -------- FOOTER ----------- */
 
 footer {
