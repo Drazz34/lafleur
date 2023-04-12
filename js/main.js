@@ -222,5 +222,3 @@ window.addEventListener("DOMContentLoaded", function () {
         passwordInput.addEventListener("blur", validatePassword);
     }
 });
-
-

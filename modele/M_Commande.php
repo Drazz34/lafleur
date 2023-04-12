@@ -103,22 +103,6 @@ class M_Commande
         return $adresse_id;
     }
 
-    // Ajoute une nouvelle commande
-    public static function ajouterCommande($client_id, $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id)
-    {
-        $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("INSERT INTO lf_commandes (client_id, article_id, quantite, adresse_livraison, date_commande, date_livraison_souhaitee, frais_livraison_id) VALUES (:client_id, :article_id, :quantite, :adresse_livraison, CURDATE(), :date_livraison, :frais_livraison_id)");
-        $stmt->bindParam(":client_id", $client_id);
-        $stmt->bindParam(":article_id", $article_id);
-        $stmt->bindParam(":quantite", $quantite);
-        $stmt->bindParam(":adresse_livraison", $adresse_id);
-        $stmt->bindParam(":date_livraison", $livraison_date);
-        
-        $stmt->bindParam(":frais_livraison_id", $frais_livraison_id);
-        // $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
-        $stmt->execute();
-    }
-
     /**
      * Permet de savoir la quantité restante d'un article
      *
@@ -133,5 +117,65 @@ class M_Commande
         $stmt->execute();
         $quantite_dispo = $stmt->fetch(PDO::FETCH_COLUMN);
         return $quantite_dispo;
+    }
+
+    // Ajoute une nouvelle commande
+    public static function ajouterCommande($client_id, $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id, $gain_loterie_id)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("INSERT INTO lf_commandes (client_id, article_id, quantite, adresse_livraison, date_commande, date_livraison_souhaitee, frais_livraison_id, gain_loterie_id) VALUES (:client_id, :article_id, :quantite, :adresse_livraison, CURDATE(), :date_livraison, :frais_livraison_id, :gain_loterie_id)");
+        $stmt->bindParam(":client_id", $client_id);
+        $stmt->bindParam(":article_id", $article_id);
+        $stmt->bindParam(":quantite", $quantite);
+        $stmt->bindParam(":adresse_livraison", $adresse_id);
+        $stmt->bindParam(":date_livraison", $livraison_date);
+        $stmt->bindParam(":frais_livraison_id", $frais_livraison_id);
+        $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
+        $stmt->execute();
+
+        // Récupère l'ID de la dernière commande insérée
+        $commande_id = $pdo->lastInsertId();
+
+        return $commande_id;
+    }
+
+    // public static function ajouterGainLoterie($commande_id, $gain_loterie_id)
+    // {
+    //     $pdo = AccesDonnees::getPdo();
+    //     $stmt = $pdo->prepare("UPDATE lf_commandes SET gain_loterie_id = :gain_loterie_id WHERE id = :commande_id");
+    //     $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
+    //     $stmt->bindParam(":commande_id", $commande_id);
+    //     $stmt->execute();
+    // }
+
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
+    public static function lotGagne($id)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT * FROM lf_gains_loterie WHERE id=:id AND quantite_totale > 0");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $lot_gagne = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Retourne l'ID du lot gagné
+        return ($lot_gagne) ? $lot_gagne['id'] : NULL;
+    }
+
+
+    public static function derniereCommandeId($client_id)
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT id FROM lf_commandes WHERE client_id = :client_id");
+        $stmt->bindParam(":client_id", $client_id);
+        $stmt->execute();
+        $derniere_commande = $stmt->fetchColumn();
+
+        return $derniere_commande;
     }
 }

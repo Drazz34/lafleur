@@ -76,11 +76,12 @@
         <input type="hidden" name="prix_total" id="prix_total">
         <!-- Élément caché pour stocker le frais_livraison_id -->
         <input type="hidden" name="frais_livraison_id" id="frais_livraison_id">
-        
+
         <input type="hidden" id="frais_gratuit" value="<?= $frais_livraison[0] ?>">
         <input type="hidden" id="frais_payant" value="<?= $frais_livraison[1] ?>">
 
-
+        <input type="hidden" name="gain_loterie_id" id="gain_loterie_id">
+        
         <label for="livraison_nom"></label>
 
         <input type="text" name="livraison_nom" id="livraison_nom" class="input_form" value="<?= $client['nom'] ?>" required>
@@ -117,7 +118,7 @@
         </div>
 
         <input type="submit" class="btn_lien input_submit" name="paiement_submit" value="Paiement">
-
+        
     </form>
 
 </section>

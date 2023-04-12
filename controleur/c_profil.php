@@ -18,7 +18,6 @@ if (!empty($_SESSION['client'])) {
 
 
 
-
 if (!empty($_POST['modif_submit'])) {
     $nouvelEmail = $_POST['modif_email'];
     $nouveauNom = $_POST['modif_nom'];

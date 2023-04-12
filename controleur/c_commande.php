@@ -27,6 +27,8 @@ $villesCp2 = M_Commande::afficheVilleCp2();
 
 $frais_livraison = M_Commande::afficheFraisLivraison();
 
+
+
 // Au paiement
 if (isset($_POST['paiement_submit'])) {
     // Récupérer les données du formulaire
@@ -40,6 +42,12 @@ if (isset($_POST['paiement_submit'])) {
     $prix_total = $_POST['prix_total'];
     $frais_livraison_id = $_POST['frais_livraison_id'];
 
+    // Vérifier si un lot a été gagné
+    $lot_gagne = M_Commande::lotGagne($client['id']);
+    $gain_loterie_id = ($lot_gagne) ? $lot_gagne['id'] : NULL;
+
+
+
     // Vérifier la quantité disponible
     $quantite_dispo = M_Commande::quantiteDispo($article_id);
 
@@ -48,7 +56,6 @@ if (isset($_POST['paiement_submit'])) {
         // Afficher un message d'erreur
         // echo "<p style='color:red;margin-left:20px;font-size:30px;'>Désolé, il n'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.</p>";
         echo "<script>alert('Désolé, il n\'y a pas assez de stock pour cet article. En stock : $quantite_dispo articles.');</script>";
-
     } else {
 
         // Obtenir les frais de livraison gratuits et payants
@@ -59,13 +66,18 @@ if (isset($_POST['paiement_submit'])) {
         $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);
 
         // Insérer la commande dans la table lf_commandes
-        M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id);
+        M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id, $gain_loterie_id);
+
+
 
         // Mettre à jour la quantité de l'article dans la base de données
         M_Article::MAJQuantiteArticle($article_id, $quantite);
 
         // Rediriger vers la page profil
-        header('Location: index.php?page=profil');
+        // header('Location: index.php?page=profil');
+        header('Location: vue/content/loterie_content.php');
         exit();
     }
+
+   
 }

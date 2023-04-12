@@ -86,6 +86,10 @@
 <body>
 
     <div class="machine">
+        <form id="prizeForm" action="/lafleur/index.php?page=profil" method="POST" style="display: none;">
+            <input type="hidden" name="prize_id" id="prize_id">
+        </form>
+
         <div class="slots">
             <div class="slot" id="slot1">
                 <div class="symbol">⭐</div>
@@ -97,11 +101,12 @@
                 <div class="symbol">⭐</div>
             </div>
         </div>
-        <button id="spinButton" onclick="spin()">Jouer</button><span class="message" id="message"></span>
+        <button id="spinButton" onclick="spin()">Jouer</button>
+        <span class="message" id="message"></span>
+        <span class="countdown" id="countdown" style="display:none;">Redirection dans 3 secondes...</span>
     </div>
 
     <script>
-
         // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
         function getPrize() {
             // Génère un nombre aléatoire entre 0 et 100
@@ -109,26 +114,49 @@
 
             // Compare le nombre aléatoire aux seuils pour déterminer le prix et le symbole correspondant
             if (randomNumber < 2) {
-                return { prize: "un bouquet de roses", symbol: "💐" };
+                return {
+                    id: 1,
+                    prize: "un bouquet de roses",
+                    symbol: "💐"
+                };
             } else if (randomNumber < 10) {
-                return { prize: "une rose", symbol: "🌹" };
+                return {
+                    id: 2,
+                    prize: "une rose",
+                    symbol: "🌹"
+                };
             } else if (randomNumber < 30) {
-                return { prize: "un porte-clé", symbol: "🔑" };
+                return {
+                    id: 3,
+                    prize: "un porte-clé",
+                    symbol: "🔑"
+                };
             } else if (randomNumber < 60) {
-                return { prize: "un sac réutilisable", symbol: "🛍️" };
+                return {
+                    id: 4,
+                    prize: "un sac réutilisable",
+                    symbol: "🛍️"
+                };
             } else {
-                return { prize: "un stylo", symbol: "🖊️" };
+                return {
+                    id: 5,
+                    prize: "un stylo",
+                    symbol: "🖊️"
+                };
             }
         }
 
+        
+
         // Fonction qui déclenche l'animation des rouleaux et détermine le résultat
         function spin() {
+
             // Obtient les éléments DOM pour les trois rouleaux et le message
             const slot1 = document.getElementById("slot1").querySelector(".symbol");
             const slot2 = document.getElementById("slot2").querySelector(".symbol");
             const slot3 = document.getElementById("slot3").querySelector(".symbol");
             const message = document.getElementById("message");
-            const spinButton = document.getElementById("spinButton");
+            const spinButton = document.getElementById("spinButton");            
 
             // Désactive le bouton pour empêcher de jouer à nouveau
             spinButton.disabled = true;
@@ -140,10 +168,11 @@
             // Initialise les variables prize (lot) et symbol (symbole à afficher sur les rouleaux)
             let prize = null;
             let symbol = "❌";
+            let result = null;
 
             // Si le joueur gagne, appelle la fonction getPrize() pour obtenir le lot et le symbole correspondant
-            if (winOrLose <= 0.5) {
-                const result = getPrize();
+            if (winOrLose <= 1) {
+                result = getPrize();
                 prize = result.prize;
                 symbol = result.symbol;
             }
@@ -166,15 +195,36 @@
                 if (prize) {
                     message.textContent = "Gagné ! Vous avez remporté " + prize + " !";
                     message.style.color = "lime";
+                    // Ajoute l'ID du lot gagné à l'input caché et soumet le formulaire
+                    document.getElementById("prize_id").value = result.id;
+                    
                 } else {
                     // Sinon, le joueur a perdu, affiche le message de perte
                     message.textContent = "Perdu";
                     message.style.color = "red";
                 }
-            }, 500); // Fin du setTimeout, l'animation et la mise à jour des rouleaux sont effectuées après 500ms
-            console.log(winOrLose);
-        }
 
+                console.log(result.id);
+                console.log(prize);
+
+                // Compte à rebours de 3 secondes avant le retour automatique sur le site
+                let secondsLeft = 3;
+                const countdown = setInterval(() => {
+                    message.textContent = `Redirection vers le site dans ${secondsLeft} secondes...`;
+                    secondsLeft--;
+                    if (secondsLeft === -1) {
+                        clearInterval(countdown);
+                        // Soumettre le formulaire après le compte à rebours
+                        if (prize) {
+                            document.getElementById("prizeForm").submit();
+                        } else {
+                            window.location.href = "/lafleur/index.php?page=profil";
+                        }
+                        
+                    }
+                }, 1000);
+            }, 500)
+        }
     </script>
 
 </body>
