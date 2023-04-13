@@ -25,7 +25,7 @@
 
                     <tr>
                         <td><?= $commande['id'] ?></td>
-                        <td><?= $commande['nom'] ?><?php if($commande['gain'] != null) { echo "<br>1 " . $commande['gain'] . " gratuit"; } ?></td>
+                        <td><?= $commande['nom'] ?><?php if($commande['gain'] != null) { echo "<br>Gain : 1 " . $commande['gain']; } ?></td>
                         <td><?= $commande['date_de_commande'] ?></td>
                         <td><?= $commande['prix'] ?></td>
                     </tr>

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-class M_Loterie 
+class M_Loterie
 {
     // public static function afficheGains()
     // {
@@ -11,14 +11,22 @@ class M_Loterie
     //     return $gains;
     // }
 
-    public static function recupererGainLoterieId($lot)
+    // public static function recupererGainLoterieId($lot)
+    // {
+    //     $pdo = AccesDonnees::getPdo();
+    //     $stmt = $pdo->prepare("SELECT id FROM lf_gains_loterie WHERE lot = :lot");
+    //     $stmt->bindParam(':lot', $lot, PDO::PARAM_STR);
+    //     $stmt->execute();
+    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     return $result ? $result['id'] : null;
+    // }
+
+    public static function mettreAJourQuantiteLot($idLot, $quantite)
     {
-        $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT id FROM lf_gains_loterie WHERE lot = :lot");
-        $stmt->bindParam(':lot', $lot, PDO::PARAM_STR);
+        $pdo = Accesdonnees::getPdo();
+        $stmt = $pdo->prepare("UPDATE lf_gains_loterie SET quantite_totale = :quantite WHERE id = :id");
+        $stmt->bindParam(':id', $idLot, PDO::PARAM_INT);
+        $stmt->bindParam(':quantite', $quantite, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result ? $result['id'] : null;
     }
-    
 }

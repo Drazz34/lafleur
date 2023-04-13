@@ -1,5 +1,9 @@
 <section id="jeuLoterie">
 
+    <h1 class="h1">Jeu spécial fête des mères</h1>
+
+    <p class="pLoterie">Tentez de gagner un de nos nombreux lots, bonne chance <?= $client['prenom'] ?> !</p>
+
     <div class="machine">
 
         <!-- <form id="prizeForm" action="/lafleur/index.php?page=profil" method="POST" style="display: none;">
@@ -56,7 +60,7 @@
         } else if (randomNumber < 10) {
             return {
                 id: 2,
-                prize: "roses",
+                prize: "rose",
                 symbol: "🌹"
             };
         } else if (randomNumber < 30) {
@@ -105,7 +109,7 @@
         let result = null;
 
         // Si le joueur gagne, appelle la fonction getPrize() pour obtenir le lot et le symbole correspondant
-        if (winOrLose <= 1) {
+        if (winOrLose <= 0.75) {
             result = getPrize();
             prize = result.prize;
             symbol = result.symbol;
@@ -128,14 +132,14 @@
             // Si le joueur a gagné un lot, affiche le message de gain et le lot remporté
             if (prize) {
                 message.textContent = "Gagné ! Vous avez remporté 1 " + prize + " !";
-                message.style.color = "lime";
+                message.style.color = "white";
                 // Ajoute l'ID du lot gagné à l'input caché
                 document.getElementById("prize_id").value = result.id;
                 document.querySelector('input[name="valide_gain"]').style.display = "block";
             } else {
                 // Sinon, le joueur a perdu, affiche le message de perte
                 message.textContent = "Perdu";
-                message.style.color = "red";
+                message.style.color = "white";
                 // Compte à rebours de 3 secondes avant le retour automatique sur le site
                 // Compte à rebours de 3 secondes avant le retour automatique sur le site
                 let secondsLeft = 3;

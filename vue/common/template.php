@@ -75,12 +75,16 @@ if (!empty($_SESSION['client'])) {
             include "vue/content/commande_content.php";
             break;
         case 'loterie':
-            include "controleur/c_loterie.php";            
+            include "controleur/c_loterie.php";
             include "vue/content/loterie_content.php";
             break;
+        case 'default':
+            header("Location: vue/404.html");
         default:
-            include "vue/content/404.html";
-            break;
+            // include "vue/content/404.html";
+            // break;
+            // header("Location: /404.php");
+            exit;
     }
 
 

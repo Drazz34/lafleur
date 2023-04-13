@@ -131,16 +131,24 @@ class M_Commande
         $stmt = $pdo->prepare("UPDATE lf_commandes SET gain_loterie_id = :gain_loterie_id WHERE client_id = :client_id ORDER BY id DESC LIMIT 1");
         $stmt->bindParam(':gain_loterie_id', $gainLoterieId, PDO::PARAM_INT);
         $stmt->bindParam(':client_id', $clientId, PDO::PARAM_INT);
-        $stmt->execute();    
+        $stmt->execute();
+
+        // Met à jour la quantité du lot dans la table lf_gains_loterie
+        $stmt = $pdo->prepare("SELECT quantite_totale FROM lf_gains_loterie WHERE id = :id");
+        $stmt->bindParam(':id', $gainLoterieId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $quantite = $result['quantite_totale'] - 1; // Décrémente la quantité de 1
+        M_Loterie::mettreAJourQuantiteLot($gainLoterieId, $quantite);
     }
 
-    public static function afficheGainLoterie($idCommande)
-    {
-        $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT lf_gains_loterie.lot FROM lf_commandes JOIN lf_gains_loterie ON lf_gains_loterie.id = lf_commandes.gain_loterie_id WHERE lf_commandes.id = :idCommande;");
-        $stmt->bindParam(":idCommande", $idCommande);
-        $stmt->execute();
-        $gain = $stmt->fetch(PDO::FETCH_COLUMN);
-        return $gain;
-    }
+    // public static function afficheGainLoterie($idCommande)
+    // {
+    //     $pdo = AccesDonnees::getPdo();
+    //     $stmt = $pdo->prepare("SELECT lf_gains_loterie.lot FROM lf_commandes JOIN lf_gains_loterie ON lf_gains_loterie.id = lf_commandes.gain_loterie_id WHERE lf_commandes.id = :idCommande;");
+    //     $stmt->bindParam(":idCommande", $idCommande);
+    //     $stmt->execute();
+    //     $gain = $stmt->fetch(PDO::FETCH_COLUMN);
+    //     return $gain;
+    // }
 }
