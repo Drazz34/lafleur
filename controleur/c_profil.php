@@ -11,13 +11,6 @@ if (!empty($_SESSION['client'])) {
     $fraisLivraison = M_Commande::afficheFraisLivraison($client['id']);
 }
 
-// $client = M_Client::trouverClientParId($_SESSION['client']['id']);
-
-// $commandesClient = [];
-
-
-
-
 if (!empty($_POST['modif_submit'])) {
     $nouvelEmail = $_POST['modif_email'];
     $nouveauNom = $_POST['modif_nom'];

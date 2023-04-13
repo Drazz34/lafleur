@@ -845,6 +845,8 @@ table.commandes td {
     margin-bottom: 0;
 }
 
+/* -------- PAGE LOTERIE ----------- */
+
 .machine {
     width: 350px;
     margin: 0 auto;
@@ -908,7 +910,26 @@ table.commandes td {
 .message {
     display: inline-block;
     margin-left: 10px;
+}
+
+#formGain {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#formGain .submitGain {
+    background-color: #555;
+    color: white;
     font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formGain .submitGain:hover {
+    background-color: #666;
 }
 
 /* -------- FOOTER ----------- */

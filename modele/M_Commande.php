@@ -5,22 +5,6 @@ class M_Commande
 
     // Affiche les informations des commandes d'un client
 
-    // public static function afficherCommandes($idClient)
-    // {
-    //     $pdo = Accesdonnees::getPdo();
-    //     $stmt = $pdo->prepare("SELECT lf_commandes.id, lf_commandes.quantite * lf_articles.prix_unitaire + IF(lf_commandes.frais_livraison_id = 1, 0, 2.99) AS prix, lf_articles.nom AS nom, DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande
-    //     FROM lf_clients
-    //     JOIN lf_commandes ON lf_clients.id = lf_commandes.client_id
-    //     JOIN lf_articles ON lf_commandes.article_id = lf_articles.id
-    //     JOIN lf_frais_livraison ON lf_frais_livraison.id = lf_commandes.frais_livraison_id
-    //     WHERE lf_clients.id = :clientId
-    //     ORDER BY lf_commandes.id");
-    //     $stmt->bindParam(":clientId", $idClient);
-    //     $stmt->execute();
-    //     $lesCommandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     return $lesCommandes;
-    // }
-
     public static function afficherCommandes($idClient)
     {
         $pdo = Accesdonnees::getPdo();
@@ -28,11 +12,13 @@ class M_Commande
                                       lf_commandes.quantite * lf_articles.prix_unitaire 
                                       + CASE WHEN lf_commandes.frais_livraison_id = 1 THEN 0 ELSE 2.99 END AS prix, 
                                       lf_articles.nom AS nom, 
-                                      DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande
+                                      DATE_FORMAT(lf_commandes.date_commande, '%d-%m-%Y') AS date_de_commande,
+                                      lf_gains_loterie.lot AS gain
                                 FROM lf_clients
                                 JOIN lf_commandes ON lf_clients.id = lf_commandes.client_id
                                 JOIN lf_articles ON lf_commandes.article_id = lf_articles.id
                                 JOIN lf_frais_livraison ON lf_frais_livraison.id = lf_commandes.frais_livraison_id
+                                LEFT JOIN lf_gains_loterie ON lf_gains_loterie.id = lf_commandes.gain_loterie_id
                                 WHERE lf_clients.id = :clientId
                                 ORDER BY lf_commandes.id");
         $stmt->bindParam(":clientId", $idClient);
@@ -139,43 +125,22 @@ class M_Commande
         return $commande_id;
     }
 
-    // public static function ajouterGainLoterie($commande_id, $gain_loterie_id)
-    // {
-    //     $pdo = AccesDonnees::getPdo();
-    //     $stmt = $pdo->prepare("UPDATE lf_commandes SET gain_loterie_id = :gain_loterie_id WHERE id = :commande_id");
-    //     $stmt->bindParam(":gain_loterie_id", $gain_loterie_id);
-    //     $stmt->bindParam(":commande_id", $commande_id);
-    //     $stmt->execute();
-    // }
-
-
-    /**
-     * 
-     * 
-     * 
-     * 
-     */
-    public static function lotGagne($id)
+    public static function ajouterGainLoterieDerniereCommande($clientId, $gainLoterieId)
     {
         $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT * FROM lf_gains_loterie WHERE id=:id AND quantite_totale > 0");
-        $stmt->bindParam(":id", $id);
-        $stmt->execute();
-        $lot_gagne = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Retourne l'ID du lot gagné
-        return ($lot_gagne) ? $lot_gagne['id'] : NULL;
+        $stmt = $pdo->prepare("UPDATE lf_commandes SET gain_loterie_id = :gain_loterie_id WHERE client_id = :client_id ORDER BY id DESC LIMIT 1");
+        $stmt->bindParam(':gain_loterie_id', $gainLoterieId, PDO::PARAM_INT);
+        $stmt->bindParam(':client_id', $clientId, PDO::PARAM_INT);
+        $stmt->execute();    
     }
 
-
-    public static function derniereCommandeId($client_id)
+    public static function afficheGainLoterie($idCommande)
     {
         $pdo = AccesDonnees::getPdo();
-        $stmt = $pdo->prepare("SELECT id FROM lf_commandes WHERE client_id = :client_id");
-        $stmt->bindParam(":client_id", $client_id);
+        $stmt = $pdo->prepare("SELECT lf_gains_loterie.lot FROM lf_commandes JOIN lf_gains_loterie ON lf_gains_loterie.id = lf_commandes.gain_loterie_id WHERE lf_commandes.id = :idCommande;");
+        $stmt->bindParam(":idCommande", $idCommande);
         $stmt->execute();
-        $derniere_commande = $stmt->fetchColumn();
-
-        return $derniere_commande;
+        $gain = $stmt->fetch(PDO::FETCH_COLUMN);
+        return $gain;
     }
 }

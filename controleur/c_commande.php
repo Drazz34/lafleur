@@ -27,8 +27,6 @@ $villesCp2 = M_Commande::afficheVilleCp2();
 
 $frais_livraison = M_Commande::afficheFraisLivraison();
 
-
-
 // Au paiement
 if (isset($_POST['paiement_submit'])) {
     // Récupérer les données du formulaire
@@ -63,14 +61,12 @@ if (isset($_POST['paiement_submit'])) {
         // Insérer la commande dans la table lf_commandes
         M_Commande::ajouterCommande($client['id'], $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id, $gain_loterie_id);
 
-
-
         // Mettre à jour la quantité de l'article dans la base de données
         M_Article::MAJQuantiteArticle($article_id, $quantite);
 
         // Rediriger vers la page profil
-        // header('Location: index.php?page=profil');
-        header('Location: vue/content/loterie_content.php');
+        header('Location: index.php?page=loterie');
+        // header('Location: vue/content/loterie_content.php');
         exit();
     }
 

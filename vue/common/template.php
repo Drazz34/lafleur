@@ -74,6 +74,10 @@ if (!empty($_SESSION['client'])) {
             include "controleur/c_commande.php";
             include "vue/content/commande_content.php";
             break;
+        case 'loterie':
+            include "controleur/c_loterie.php";            
+            include "vue/content/loterie_content.php";
+            break;
         default:
             include "vue/content/404.html";
             break;
