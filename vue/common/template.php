@@ -78,13 +78,10 @@ if (!empty($_SESSION['client'])) {
             include "controleur/c_loterie.php";
             include "vue/content/loterie_content.php";
             break;
-        case 'default':
-            header("Location: vue/404.html");
         default:
-            // include "vue/content/404.html";
-            // break;
-            // header("Location: /404.php");
-            exit;
+            header("HTTP/1.0 404 Not Found");
+            header("Location: vue/404.html");
+            exit();
     }
 
 
