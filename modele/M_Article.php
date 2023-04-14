@@ -10,9 +10,10 @@ class M_Article
 
     public static function afficheTousLesArticles()
     {
-        $req = "SELECT * FROM lf_articles";
-        $res = AccesDonnees::query($req);
-        $lesArticles = $res->fetchAll(PDO::FETCH_ASSOC);
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT * FROM lf_articles");
+        $stmt->execute();
+        $lesArticles = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $lesArticles;
     }
 
@@ -106,4 +107,17 @@ class M_Article
         $stmt->execute();
     }
 
+    /**
+     * Affiche le nom des couleurs
+     * 
+     * @return array
+     */
+    public static function AfficheLesCouleurs()
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT * FROM lf_couleurs");
+        $stmt->execute();
+        $couleurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $couleurs;
+    }
 }

@@ -10,9 +10,19 @@ class M_Categorie
 
    public static function trouveLesCategories()
    {
-      $req = "SELECT * FROM lf_categories";
-      $res = AccesDonnees::query($req);
-      $lesLignes = $res->fetchAll(PDO::FETCH_ASSOC);
+      $pdo = AccesDonnees::getPdo();
+      $stmt = $pdo->prepare("SELECT * FROM lf_categories");
+      $stmt->execute();
+      $lesLignes = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $lesLignes;
+   }
+
+   public static function afficheIdNomCategories()
+   {
+      $pdo = AccesDonnees::getPdo();
+      $stmt = $pdo->prepare("SELECT id, nom FROM lf_categories");
+      $stmt->execute();
+      $affiche = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $affiche;
    }
 }

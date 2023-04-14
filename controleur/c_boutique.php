@@ -31,3 +31,7 @@ if (isset($_GET['categorie']) && isset($_GET['couleur'])) {
     $id_couleur = $_GET['couleur'];
     $articlesDUneCategorieEtDUneCouleur = M_Article::afficheLesArticlesParCategorieEtParCouleur($id_categorie, $id_couleur);
 }
+
+$categories = M_Categorie::afficheIdNomCategories();
+
+$couleurs = M_Article::AfficheLesCouleurs();

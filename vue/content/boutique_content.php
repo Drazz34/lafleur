@@ -12,11 +12,9 @@
                 <label for="categorie">Choix par catégorie : </label>
                 <select name="categorie" id="categorie">
                     <option value="">-- Catégories --</option>
-                    <option value="1" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 1) echo "selected"; ?>>Mariage</option>
-                    <option value="3" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 3) echo "selected"; ?>>Remerciement</option>
-                    <option value="4" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 4) echo "selected"; ?>>Naissance</option>
-                    <option value="2" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 2) echo "selected"; ?>>Anniversaire</option>
-                    <option value="5" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == 5) echo "selected"; ?>>Amour et sentiment</option>
+                    <?php foreach ($categories as $categorie) : ?>
+                        <option value="<?= $categorie['id'] ?>" <?php if (isset($_GET['categorie']) && $_GET['categorie'] == $categorie['id']) echo "selected"; ?>><?= $categorie['nom'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -24,10 +22,9 @@
                 <label for="couleur">Choix par couleur : </label>
                 <select name="couleur" id="couleur">
                     <option value="">-- Couleurs --</option>
-                    <option value="1" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 1) echo "selected"; ?>>Rouge</option>
-                    <option value="2" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 2) echo "selected"; ?>>Jaune</option>
-                    <option value="3" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 3) echo "selected"; ?>>Rose</option>
-                    <option value="4" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == 4) echo "selected"; ?>>Orange</option>
+                    <?php foreach ($couleurs as $couleur) : ?>
+                        <option value="<?= $couleur['id'] ?>" <?php if (isset($_GET['couleur']) && $_GET['couleur'] == $couleur['id']) echo "selected"; ?>><?= $couleur['nom_couleur'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -62,10 +59,10 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <?php if ($article['quantite_dispo'] > 0) :?>
-                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
-                    <?php else :?>
-                    <p class="article_indispo">En rupture de stock</p>
+                    <?php if ($article['quantite_dispo'] > 0) : ?>
+                        <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else : ?>
+                        <p class="article_indispo">En rupture de stock</p>
                     <?php endif; ?>
 
                 </div>
@@ -87,10 +84,10 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <?php if ($article['quantite_dispo'] > 0) :?>
-                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
-                    <?php else :?>
-                    <p class="article_indispo">En rupture de stock</p>
+                    <?php if ($article['quantite_dispo'] > 0) : ?>
+                        <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else : ?>
+                        <p class="article_indispo">En rupture de stock</p>
                     <?php endif; ?>
 
                 </div>
@@ -112,10 +109,10 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <?php if ($article['quantite_dispo'] > 0) :?>
-                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
-                    <?php else :?>
-                    <p class="article_indispo">En rupture de stock</p>
+                    <?php if ($article['quantite_dispo'] > 0) : ?>
+                        <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else : ?>
+                        <p class="article_indispo">En rupture de stock</p>
                     <?php endif; ?>
 
                 </div>
@@ -137,10 +134,10 @@
 
                     <p><?= $article['prix_unitaire'] ?> €</p>
 
-                    <?php if ($article['quantite_dispo'] > 0) :?>
-                    <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
-                    <?php else :?>
-                    <p class="article_indispo">En rupture de stock</p>
+                    <?php if ($article['quantite_dispo'] > 0) : ?>
+                        <a href="<?= $url_commande; ?>&article_id=<?= $article['id'] ?>">Commander</a>
+                    <?php else : ?>
+                        <p class="article_indispo">En rupture de stock</p>
                     <?php endif; ?>
 
                 </div>
