@@ -45,56 +45,107 @@
 
 
 <script>
-    
     const gains = <?php echo json_encode($gains); ?>;
-    
-    // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
+
+    // // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
+    // function getPrize(gains) {
+    //     // Génère un nombre aléatoire entre 0 et 100
+    //     const randomNumber = Math.random() * 100;
+    //     console.log(randomNumber);
+    //     // Compare le nombre aléatoire aux seuils pour déterminer le prix et le symbole correspondant
+    //     for (let gain of gains) {
+    //         let id = gain.id;
+    //         let quantite = gain.quantite_totale;
+
+    //         if (quantite > 0) {
+    //             if (randomNumber >= 0 && randomNumber < 2 && id === 1) {
+    //                 return {
+    //                     id: 1,
+    //                     prize: "bouquet de roses",
+    //                     symbol: "💐"
+    //                 };
+    //             } else if (randomNumber >= 2 && randomNumber < 10 && id === 2) {
+    //                 return {
+    //                     id: 2,
+    //                     prize: "rose",
+    //                     symbol: "🌹"
+    //                 };
+    //             } else if (randomNumber >= 10 && randomNumber < 30 && id === 3) {
+    //                 return {
+    //                     id: 3,
+    //                     prize: "porte-clé",
+    //                     symbol: "🔑"
+    //                 };
+    //             } else if (randomNumber >= 30 && randomNumber < 60 && id === 4) {
+    //                 return {
+    //                     id: 4,
+    //                     prize: "sac réutilisable",
+    //                     symbol: "🛍️"
+    //                 };
+    //             } else if (randomNumber >= 60 && randomNumber < 100 && id === 5) {
+    //                 return {
+    //                     id: 5,
+    //                     prize: "stylo",
+    //                     symbol: "🖊️"
+    //                 };
+    //             }
+    //         }
+    //         console.log("id:", id, "quantite:", quantite, "randomNumber:", randomNumber);
+    //     }
+    //     
+    //     return null;
+    // }
+
+    const probabilityThresholds = {
+        1: {
+            threshold: 2,
+            prize: "bouquet de roses",
+            symbol: "💐"
+        },
+        2: {
+            threshold: 10,
+            prize: "rose",
+            symbol: "🌹"
+        },
+        3: {
+            threshold: 30,
+            prize: "porte-clé",
+            symbol: "🔑"
+        },
+        4: {
+            threshold: 60,
+            prize: "sac réutilisable",
+            symbol: "🛍️"
+        },
+        5: {
+            threshold: 100,
+            prize: "stylo",
+            symbol: "🖊️"
+        }
+    };
+
+
     function getPrize(gains) {
-        // Génère un nombre aléatoire entre 0 et 100
         const randomNumber = Math.random() * 100;
 
-        // Compare le nombre aléatoire aux seuils pour déterminer le prix et le symbole correspondant
         for (let gain of gains) {
             let id = gain.id;
             let quantite = gain.quantite_totale;
+            let threshold = probabilityThresholds[id].threshold;
 
-            if (quantite > 0) {
-                if (randomNumber < 2 && id === 1) {
-                    return {
-                        id: 1,
-                        prize: "bouquet de roses",
-                        symbol: "💐"
-                    };
-                } else if (randomNumber < 10 && id === 2) {
-                    return {
-                        id: 2,
-                        prize: "rose",
-                        symbol: "🌹"
-                    };
-                } else if (randomNumber < 30 && id === 3) {
-                    return {
-                        id: 3,
-                        prize: "porte-clé",
-                        symbol: "🔑"
-                    };
-                } else if (randomNumber < 60 && id === 4) {
-                    return {
-                        id: 4,
-                        prize: "sac réutilisable",
-                        symbol: "🛍️"
-                    };
-                } else if (id === 5) {
-                    return {
-                        id: 5,
-                        prize: "stylo",
-                        symbol: "🖊️"
-                    };
-                }
+            if (quantite > 0 && randomNumber < threshold) {
+                return {
+                    id: id,
+                    prize: probabilityThresholds[id].prize,
+                    symbol: probabilityThresholds[id].symbol
+                };
             }
+
         }
-        // Aucun lot disponible, retourne null
         return null;
     }
+
+
 
     let prizeId;
 
@@ -112,7 +163,7 @@
         spinButton.disabled = true;
         spinButton.style.opacity = 0.5;
 
-        // Génère un nombre aléatoire pour déterminer si le joueur gagne (nombre <= 0.5) ou perd (nombre > 0.5)
+        // Génère un nombre aléatoire pour déterminer si le joueur gagne (nombre <= 0.75) ou perd (nombre > 0.75)
         const winOrLose = Math.random();
 
         // Initialise les variables prize (lot) et symbol (symbole à afficher sur les rouleaux)
@@ -127,6 +178,7 @@
                 prize = result.prize;
                 symbol = result.symbol;
             }
+
         }
 
         // Anime les rouleaux en les déplaçant vers le haut de 50 pixels
@@ -154,7 +206,7 @@
                 // Sinon, le joueur a perdu, affiche le message de perte
                 message.textContent = "Perdu";
                 message.style.color = "white";
-                // Compte à rebours de 3 secondes avant le retour automatique sur le site
+
                 // Compte à rebours de 3 secondes avant le retour automatique sur le site
                 let secondsLeft = 3;
                 const countdown = setInterval(() => {
@@ -162,7 +214,7 @@
                     secondsLeft--;
                     if (secondsLeft === -1) {
                         clearInterval(countdown);
-                        window.location.href = "/lafleur/index.php?page=profil";
+                        window.location.href = "/site_lafleur/index.php?page=profil";
                     }
                 }, 1000);
             }
