@@ -9,7 +9,7 @@
             <li><a href="index.php?page=prestations">Prestations</a></li>
             <li><a href="index.php?page=boutique">Boutique</a></li>
             <li><a href="index.php?page=contact">Contact</a></li>
-            <li><a href="">Blog</a></li>
+            <li><a href="https://villac.needemand.com/lafleur/wordpress/" target="_blank">Blog</a></li>
             <?php if (empty($client)) {
                 echo '<li><a href="index.php?page=connexion">Se connecter</a></li>';
             } else {
