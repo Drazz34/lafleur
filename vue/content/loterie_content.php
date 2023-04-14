@@ -45,43 +45,54 @@
 
 
 <script>
+    const gains = <?php echo json_encode($gains); ?>;
+    console.log(gains);
     // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
-    function getPrize() {
+    function getPrize(gains) {
         // Génère un nombre aléatoire entre 0 et 100
         const randomNumber = Math.random() * 100;
 
         // Compare le nombre aléatoire aux seuils pour déterminer le prix et le symbole correspondant
-        if (randomNumber < 2) {
-            return {
-                id: 1,
-                prize: "bouquet de roses",
-                symbol: "💐"
-            };
-        } else if (randomNumber < 10) {
-            return {
-                id: 2,
-                prize: "rose",
-                symbol: "🌹"
-            };
-        } else if (randomNumber < 30) {
-            return {
-                id: 3,
-                prize: "porte-clé",
-                symbol: "🔑"
-            };
-        } else if (randomNumber < 60) {
-            return {
-                id: 4,
-                prize: "sac réutilisable",
-                symbol: "🛍️"
-            };
-        } else {
-            return {
-                id: 5,
-                prize: "stylo",
-                symbol: "🖊️"
-            };
+        for (let gain of gains) {
+            let id = gain.id;
+            let quantite = gain.quantite_totale;
+
+            if (quantite > 0) {
+                if (randomNumber < 2 && id === 1) {
+                    return {
+                        id: 1,
+                        prize: "bouquet de roses",
+                        symbol: "💐"
+                    };
+                } else if (randomNumber < 10 && id === 2) {
+                    return {
+                        id: 2,
+                        prize: "rose",
+                        symbol: "🌹"
+                    };
+                } else if (randomNumber < 30 && id === 3) {
+                    return {
+                        id: 3,
+                        prize: "porte-clé",
+                        symbol: "🔑"
+                    };
+                } else if (randomNumber < 60 && id === 4) {
+                    return {
+                        id: 4,
+                        prize: "sac réutilisable",
+                        symbol: "🛍️"
+                    };
+                } else if (id === 5) {
+                    return {
+                        id: 5,
+                        prize: "stylo",
+                        symbol: "🖊️"
+                    };
+                }
+            }
         }
+        // Aucun lot disponible, retourne null
+        return null;
     }
 
     let prizeId;
@@ -110,9 +121,11 @@
 
         // Si le joueur gagne, appelle la fonction getPrize() pour obtenir le lot et le symbole correspondant
         if (winOrLose <= 0.75) {
-            result = getPrize();
-            prize = result.prize;
-            symbol = result.symbol;
+            result = getPrize(gains);
+            if (result !== null) {
+                prize = result.prize;
+                symbol = result.symbol;
+            }
         }
 
         // Anime les rouleaux en les déplaçant vers le haut de 50 pixels

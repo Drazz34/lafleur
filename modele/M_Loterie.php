@@ -2,14 +2,14 @@
 
 class M_Loterie
 {
-    // public static function afficheGains()
-    // {
-    //     $pdo = AccesDonnees::getPdo();
-    //     $stmt = $pdo->prepare("SELECT * FROM lf_gains_loterie");
-    //     $stmt->execute();
-    //     $gains = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //     return $gains;
-    // }
+    public static function afficheGains()
+    {
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare("SELECT * FROM lf_gains_loterie");
+        $stmt->execute();
+        $gains = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $gains;
+    }
 
     // public static function recupererGainLoterieId($lot)
     // {

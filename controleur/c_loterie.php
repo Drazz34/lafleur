@@ -17,3 +17,5 @@ if (isset($_POST['valide_gain'])) {
     }
     header('Location: index.php?page=profil');
 }
+
+$gains = M_Loterie::afficheGains();
