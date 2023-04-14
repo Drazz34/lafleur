@@ -2,6 +2,11 @@
 
 class M_Loterie
 {
+    /**
+     * Affiche le contenu de la table lf_gains_loterie
+     *
+     * @return array
+     */
     public static function afficheGains()
     {
         $pdo = AccesDonnees::getPdo();
@@ -11,16 +16,13 @@ class M_Loterie
         return $gains;
     }
 
-    // public static function recupererGainLoterieId($lot)
-    // {
-    //     $pdo = AccesDonnees::getPdo();
-    //     $stmt = $pdo->prepare("SELECT id FROM lf_gains_loterie WHERE lot = :lot");
-    //     $stmt->bindParam(':lot', $lot, PDO::PARAM_STR);
-    //     $stmt->execute();
-    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     return $result ? $result['id'] : null;
-    // }
-
+    /**
+     * Met à jour la quantité du lot remporté
+     *
+     * @param int $idLot
+     * @param int $quantite
+     * @return void
+     */
     public static function mettreAJourQuantiteLot($idLot, $quantite)
     {
         $pdo = Accesdonnees::getPdo();

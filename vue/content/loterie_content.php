@@ -45,8 +45,9 @@
 
 
 <script>
+    
     const gains = <?php echo json_encode($gains); ?>;
-    console.log(gains);
+    
     // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
     function getPrize(gains) {
         // Génère un nombre aléatoire entre 0 et 100
