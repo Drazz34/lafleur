@@ -854,6 +854,7 @@ table.commandes td {
 #jeuLoterie p.pLoterie {
     text-align: center;
     margin-bottom: 50px;
+    color: var(--color-typo);
 }
 
 .machine {
