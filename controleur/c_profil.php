@@ -23,10 +23,14 @@ if (!empty($_POST['modif_submit'])) {
 
     $client = M_Client::trouverClientParId($_SESSION['client']['id']);
     // Si le mot de passe actuel est correct et que le nouveau mot de passe n'est pas vide, mettez à jour le mot de passe
-    if (password_verify($ancienMotDePasse, $client['mot_de_passe']) && !empty($nouveauMotDePasse)) {
-        $motDePasse = password_hash($nouveauMotDePasse, PASSWORD_DEFAULT);
+    if (!empty($ancienMotDePasse) && !empty($nouveauMotDePasse)) {
+        if (password_verify($ancienMotDePasse, $client['mot_de_passe'])) {
+            $motDePasse = password_hash($nouveauMotDePasse, PASSWORD_DEFAULT);
+        } else {
+            echo "<script>alert('Le mot de passe actuel est incorrect.');</script>";
+            $motDePasse = $client['mot_de_passe'];
+        }
     } else {
-        echo "<script>alert('Le mot de passe actuel est incorrect.');</script>";
         $motDePasse = $client['mot_de_passe'];
     }
 
@@ -39,7 +43,6 @@ if (!empty($_POST['modif_submit'])) {
         $_SESSION['client'] = $client;
     }
     $adresse = M_Profil::adresseClient($client['id']);
-
 }
 
 if (isset($_POST['deconnexion']) && $_POST['deconnexion'] == 'true') {
