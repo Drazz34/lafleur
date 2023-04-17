@@ -10,7 +10,7 @@
 
         <?php foreach ($lesCategories as $uneCategorie) : ?>
 
-            <div class="presta_art">
+            <div class="presta_art" data-aos="fade-up">
 
                 <a href="index.php?page=boutique&categorie=<?= $uneCategorie['id'] ?>"><img src="./img/<?= $uneCategorie['photo'] ?>" alt="<?= $uneCategorie['alt'] ?>"></a>
 
@@ -26,7 +26,7 @@
 
 </section>
 
-<section class="prestation_boutique">
+<section class="prestation_boutique" data-aos="zoom-in">
 
     <div class="presta_boutique">
 

@@ -29,6 +29,9 @@ $(document).ready(function () {
     });
 });
 
+// AOS Animate
+AOS.init();
+
 // Sélectionne les villes livrables suivant le code postal choisi
 function updateVilleSelect() {
     let cpSelect = document.getElementById('livraison_cp');

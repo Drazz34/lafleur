@@ -5,7 +5,7 @@
         <h1 class="h1">Où nous trouver ?</h1>
 
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11525.688212555693!2d5.3629586!3d43.7640971!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca192abcc42867%3A0x6fb3b59d3e84dcbe!2sLafleur!5e0!3m2!1sfr!2sfr!4v1681222426760!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe data-aos="flip-up" data-aos-duration="1000" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11525.688212555693!2d5.3629586!3d43.7640971!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ca192abcc42867%3A0x6fb3b59d3e84dcbe!2sLafleur!5e0!3m2!1sfr!2sfr!4v1681222426760!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     </div>
 

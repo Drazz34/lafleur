@@ -8,13 +8,13 @@
 
 <section class="presentation">
 
-    <div class="presentation_g">
+    <div class="presentation_g" data-aos="zoom-in-right">
 
         <img src="./img/fleur.jpg" alt="Exposition de bouquets de fleurs">
 
     </div>
 
-    <div class="presentation_d">
+    <div class="presentation_d" data-aos="zoom-in-left">
 
         <h3 class="h3">Notre boutique Lafleur à Lourmarin</h3>
 
@@ -30,11 +30,11 @@
 
 <section class="coeur">
 
-    <h4>Quelques bonnes raisons de risquer le coup de coeur</h4>
+    <h4 data-aos="zoom-in">Quelques bonnes raisons de risquer le coup de coeur</h4>
 
     <div id="coeur">
 
-        <div class="coeur_art">
+        <div class="coeur_art" data-aos="flip-left" data-aos-duration="1000">
 
             <img src="./img/bouquet.jpg" alt="Bouquet de rose saumon clair">
 
@@ -43,7 +43,7 @@
 
         </div>
 
-        <div class="coeur_art">
+        <div class="coeur_art" data-aos="flip-left" data-aos-duration="1000">
 
             <img src="./img/verdure.jpg" alt="Plantes vertes">
 
@@ -52,7 +52,7 @@
 
         </div>
 
-        <div class="coeur_art">
+        <div class="coeur_art" data-aos="flip-right" data-aos-duration="1000">
 
             <img src="./img/main_fleuriste.jpg" alt="Préparation d'un bouquet de fleurs orange">
 
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div class="coeur_art">
+        <div class="coeur_art" data-aos="flip-right" data-aos-duration="1000">
 
             <img src="./img/champ.jpg" alt="Champ de coquelicot">
 

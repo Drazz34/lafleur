@@ -2,7 +2,7 @@
 
 <section class="bienvenue">
 
-    <div class="bienvenue_g">
+    <div class="bienvenue_g" data-aos="fade-right">
 
         <h3>Bienvenue</h3>
 
@@ -12,7 +12,7 @@
 
     </div>
 
-    <div class="bienvenue_d">
+    <div class="bienvenue_d" data-aos="fade-left">
 
         <img src="./img/rose.jpg" alt="Bouquet de rose">
 
@@ -22,7 +22,7 @@
 
 <section class="boutique">
 
-    <div class="boutique_g">
+    <div class="boutique_g" data-aos="fade-right">
 
         <h3>Notre boutique</h3>
 
@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="boutique_d">
+    <div class="boutique_d" data-aos="fade-left">
 
         <h3>Livraison</h3>
 
@@ -48,13 +48,13 @@
 
 <section class="fete_mere">
 
-    <div class="fete_mere_g">
+    <div class="fete_mere_g" data-aos="fade-right">
 
         <img src="./img/fete_mere.jpg" alt="Bouquet de rose dans une boîte blanche">
 
     </div>
 
-    <div class="fete_mere_d">
+    <div class="fete_mere_d" data-aos="fade-left">
 
         <h3>Fête des mères</h3>
 

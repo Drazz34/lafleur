@@ -51,7 +51,7 @@
 
             <?php foreach ($articles as $article) : ?>
 
-                <div class="card_article">
+                <div class="card_article" data-aos="fade-up">
 
                     <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
 
@@ -76,7 +76,7 @@
 
             <?php foreach ($articlesDUneCategorie as $article) : ?>
 
-                <div class="card_article">
+                <div class="card_article" data-aos="fade-up">
 
                     <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
 
@@ -101,7 +101,7 @@
 
             <?php foreach ($articlesDUneCouleur as $article) : ?>
 
-                <div class="card_article">
+                <div class="card_article" data-aos="fade-up">
 
                     <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
 
@@ -126,7 +126,7 @@
 
             <?php foreach ($articlesDUneCategorieEtDUneCouleur as $article) : ?>
 
-                <div class="card_article">
+                <div class="card_article" data-aos="fade-up">
 
                     <a href="./img/<?= $article['photo'] ?>" class="image-popup-no-margins"><img src="./img/<?= $article['photo'] ?>" alt="<?= $article['alt'] ?>"></a>
 
