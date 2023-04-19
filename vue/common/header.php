@@ -29,15 +29,15 @@
         <span class="line l2"></span>
         <span class="line l3"></span>
 
-        </p>
+    </button>
 
 </header>
 
 <div class="banniere">
 
-<!-- <?php if (!empty($client)) {
-        echo "<h3>Bienvenue " . $client['prenom'] . " !</h3>";
-    } ?> -->
+    <!-- <?php if (!empty($client)) {
+                echo "<h3>Bienvenue " . $client['prenom'] . " !</h3>";
+            } ?> -->
 
     <img src="./img/banniere.svg" alt="Bannière du site" class="banniere_img">
 
