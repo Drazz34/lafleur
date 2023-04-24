@@ -32,13 +32,6 @@ if (!empty($_SESSION['client'])) {
         header('Location: index.php'); // Rediriger vers la page d'accueil
     }
 
-    // if (isset($client)){
-    //     $client = M_Client::trouverClientParId($_SESSION['client']['id']);
-    // } 
-    // if (!empty($client)) {
-    //     $_SESSION['client'] = $client;
-    // }
-    // var_dump($client);
     include "header.php";
 
     if (!isset($page)) {
@@ -84,7 +77,6 @@ if (!empty($_SESSION['client'])) {
             header("Location: vue/404.html");
             exit();
     }
-
 
     include "footer.php";
 

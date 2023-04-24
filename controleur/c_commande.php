@@ -7,7 +7,7 @@ include_once "./modele/M_Commande.php";
 if (isset($_GET['article_id'])) {
     $article_id = $_GET['article_id'];
 } else {
-    // Redirigez vers une page d'erreur ou la page d'accueil si l'ID de l'article n'est pas défini.
+    // Redirigez vers la page d'accueil si l'ID de l'article n'est pas défini.
     header('Location: index.php');
     exit();
 }

@@ -3,7 +3,12 @@
 class M_Profil
 {
 
-    // Récupération des informations de l'adresse du client
+    /**
+     * Récupération des informations de l'adresse du client
+     *
+     * @param int $idClient
+     * @return array
+     */
     public static function adresseClient($idClient)
     {
         $pdo = Accesdonnees::getPdo();
@@ -31,15 +36,16 @@ class M_Profil
      * @param string $rue La nouvelle rue de l'adresse du client.
      * @param string $cp Le nouveau code postal de l'adresse du client.
      * @param string $ville Le nouveau nom de la ville de l'adresse du client.
+     * 
+     * @return void
      */
     public static function mettreAJourClient($idClient, $email, $password, $nom, $prenom, $rue, $cp, $ville)
     {
         // Récupération de l'objet PDO pour effectuer des requêtes SQL
         $pdo = AccesDonnees::getPdo();
 
-        
         if ($password) {
-            
+
             $stmt = $pdo->prepare('UPDATE lf_clients SET email = :email, mot_de_passe = :password, nom = :nom, prenom = :prenom WHERE id = :idClient');
             $stmt->bindParam(':password', $password);
         } else {

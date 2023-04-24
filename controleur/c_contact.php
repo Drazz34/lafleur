@@ -1,7 +1,5 @@
 <?php
 
-// var_dump($_POST);
-
 if (!empty($_POST)) {
     // Vérifier que les champs obligatoires ne sont pas vides
     if (empty($_POST['nom']) || empty($_POST['email']) || empty($_POST['message'])) {
@@ -17,7 +15,7 @@ if (!empty($_POST)) {
                 <b>Email : </b>' . htmlspecialchars($_POST['email']) . '<br>
                 <b>Téléphone : </b>' . htmlspecialchars($_POST['telephone']) . '<br>
                 <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
-    $headers = "From: webmaster@monsite.fr\r\n";
+    $headers = "From: webmaster@lafleur.fr\r\n";
     $headers .= "Reply-To: " . $_POST['email'] . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";

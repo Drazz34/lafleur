@@ -27,7 +27,7 @@
         </div>
 
         <button id="spinButton" onclick="spin()">Jouer</button>
-        <form action="" method="post" id="formGain">
+        <form action="#" method="post" id="formGain">
             <input type="hidden" name="prize_id" id="prize_id">
             <input type="submit" value="Valider le gain" name="valide_gain" style="display: none;" class="submitGain">
         </form>
@@ -145,8 +145,6 @@
         return null;
     }
 
-
-
     let prizeId;
 
     // Fonction qui déclenche l'animation des rouleaux et détermine le résultat
@@ -178,7 +176,6 @@
                 prize = result.prize;
                 symbol = result.symbol;
             }
-
         }
 
         // Anime les rouleaux en les déplaçant vers le haut de 50 pixels

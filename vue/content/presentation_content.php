@@ -1,6 +1,6 @@
 <div class="presentation_titre">
 
-    <h1 class="h1">Artisan fleuriste de passion</h3>
+    <h1 class="h1">Artisan fleuriste de passion</h1>
 
         <a href="index.php?page=contact" class="btn_lien">Nous trouver</a>
 

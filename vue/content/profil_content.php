@@ -49,7 +49,7 @@
 
     <p>Modifier mes informations :</p>
 
-    <form action="" method="post">
+    <form action="#" method="post">
 
         <label for="modif_email"></label>
 

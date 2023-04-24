@@ -17,6 +17,11 @@ class M_Categorie
       return $lesLignes;
    }
 
+   /**
+    * Retourne l'id et le nom des catégories
+    *
+    * @return array
+    */
    public static function afficheIdNomCategories()
    {
       $pdo = AccesDonnees::getPdo();

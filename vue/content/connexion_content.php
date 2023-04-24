@@ -2,7 +2,7 @@
 
     <h1 class="h1 connexion_h1">Connectez-vous</h1>
 
-        <form action="" method="post">
+        <form action="#" method="post">
 
             <label for="connexion_email"></label>
 
@@ -22,7 +22,7 @@
 
     <h1 class="h1 connexion_h1">Créez votre compte</h1>
 
-        <form action="" method="post" id="creation_form">
+        <form action="#" method="post" id="creation_form">
 
             <label for="creation_email"></label>
             <span id="email_error" class="error" style="display:none; color: red;">L'adresse email est invalide.</span>

@@ -3,8 +3,12 @@
 class M_Commande
 {
 
-    // Affiche les informations des commandes d'un client
-
+    /**
+     * Affiche les informations des commandes d'un client
+     *
+     * @param int $idClient
+     * @return array
+     */
     public static function afficherCommandes($idClient)
     {
         $pdo = Accesdonnees::getPdo();
@@ -27,8 +31,12 @@ class M_Commande
         return $lesCommandes;
     }
 
-    // Affiche les codes postaux disponibles pour livraison
-
+    
+    /**
+     * Affiche les codes postaux disponibles pour livraison
+     *
+     * @return array
+     */
     public static function afficheCP()
     {
         $pdo = AccesDonnees::getPdo();
@@ -38,7 +46,11 @@ class M_Commande
         return $codesPostaux;
     }
 
-    // Affiche les villes disponibles pour livraison pour le premier code postal
+    /**
+     * Affiche les villes disponibles pour livraison pour le premier code postal
+     *
+     * @return array
+     */
     public static function afficheVilleCp1()
     {
         $pdo = AccesDonnees::getPdo();
@@ -51,7 +63,11 @@ class M_Commande
         return $villesCp1;
     }
 
-    // Affiche les villes disponibles pour livraison pour le deuxième code postal
+    /**
+     * Affiche les villes disponibles pour livraison pour le deuxième code postal
+     *
+     * @return array
+     */
     public static function afficheVilleCp2()
     {
         $pdo = AccesDonnees::getPdo();
@@ -64,7 +80,11 @@ class M_Commande
         return $villesCp2;
     }
 
-    // Affiche les frais de livraison
+    /**
+     * Affiche les frais de livraison
+     *
+     * @return array
+     */
     public static function afficheFraisLivraison()
     {
         $pdo = AccesDonnees::getPdo();
@@ -74,7 +94,14 @@ class M_Commande
         return $frais_livraison;
     }
 
-    // Ajoute l'adresse de livraison
+    /**
+     * Ajoute l'adresse de livraison
+     *
+     * @param string $rue
+     * @param int $code_postal
+     * @param int $ville
+     * @return int
+     */
     public static function ajouterAdresseLivraison($rue, $code_postal, $ville)
     {
         $pdo = AccesDonnees::getPdo();
@@ -105,7 +132,18 @@ class M_Commande
         return $quantite_dispo;
     }
 
-    // Ajoute une nouvelle commande
+    /**
+     * Ajoute une nouvelle commande
+     *
+     * @param int $client_id
+     * @param int $article_id
+     * @param int $quantite
+     * @param int $adresse_id
+     * @param string $livraison_date
+     * @param int $frais_livraison_id
+     * @param int $gain_loterie_id
+     * @return int
+     */
     public static function ajouterCommande($client_id, $article_id, $quantite, $adresse_id, $livraison_date, $frais_livraison_id, $gain_loterie_id)
     {
         $pdo = AccesDonnees::getPdo();
@@ -125,6 +163,13 @@ class M_Commande
         return $commande_id;
     }
 
+    /**
+     * Ajoute le gain de la loterie à la dernière commande
+     *
+     * @param int $clientId
+     * @param int $gainLoterieId
+     * @return void
+     */
     public static function ajouterGainLoterieDerniereCommande($clientId, $gainLoterieId)
     {
         $pdo = AccesDonnees::getPdo();
@@ -141,14 +186,4 @@ class M_Commande
         $quantite = $result['quantite_totale'] - 1; // Décrémente la quantité de 1
         M_Loterie::mettreAJourQuantiteLot($gainLoterieId, $quantite);
     }
-
-    // public static function afficheGainLoterie($idCommande)
-    // {
-    //     $pdo = AccesDonnees::getPdo();
-    //     $stmt = $pdo->prepare("SELECT lf_gains_loterie.lot FROM lf_commandes JOIN lf_gains_loterie ON lf_gains_loterie.id = lf_commandes.gain_loterie_id WHERE lf_commandes.id = :idCommande;");
-    //     $stmt->bindParam(":idCommande", $idCommande);
-    //     $stmt->execute();
-    //     $gain = $stmt->fetch(PDO::FETCH_COLUMN);
-    //     return $gain;
-    // }
 }

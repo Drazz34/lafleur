@@ -35,10 +35,6 @@
 
 <div class="banniere">
 
-    <!-- <?php if (!empty($client)) {
-                echo "<h3>Bienvenue " . $client['prenom'] . " !</h3>";
-            } ?> -->
-
     <img src="./img/banniere.svg" alt="Bannière du site" class="banniere_img">
 
     <img src="./img/logo.svg" alt="Logo de Lafleur" class="banniere_logo">

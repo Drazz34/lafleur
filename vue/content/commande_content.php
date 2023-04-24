@@ -69,9 +69,9 @@
 
     <p>Adresse de livraison</p>
 
-    <form action="" method="post">
+    <form action="#" method="post">
 
-        <input type="hidden" name="quantite" id="quantite" value="1" min="1" oninput="updateQuantite()">
+        <input type="hidden" name="quantite" id="quantite" value="1" oninput="updateQuantite()">
         <input type="hidden" name="livraison" id="livraison">
         <input type="hidden" name="prix_total" id="prix_total">
         <!-- Élément caché pour stocker le frais_livraison_id -->

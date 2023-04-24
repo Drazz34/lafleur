@@ -2,34 +2,45 @@
 
 class M_Client
 {
-
+    /**
+     * Retourne toutes les informations d'un client
+     *
+     * @param int $id
+     * @return array
+     */
     public static function trouverClientParId($id)
-{
-    // Récupération de l'objet PDO pour effectuer des requêtes SQL
-    $pdo = AccesDonnees::getPdo();
+    {
+        // Récupération de l'objet PDO pour effectuer des requêtes SQL
+        $pdo = AccesDonnees::getPdo();
 
-    // Recherche du client dans la base de données
-    $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE id = :id');
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $client = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Recherche du client dans la base de données
+        $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $client = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $client;
-}
+        return $client;
+    }
 
-public static function trouverClientParEmail($email)
-{
-    // Récupération de l'objet PDO pour effectuer des requêtes SQL
-    $pdo = AccesDonnees::getPdo();
+    /**
+     * Retourne toutes les informations d'un client par rapport à son email
+     *
+     * @param string $email
+     * @return array
+     */
+    public static function trouverClientParEmail($email)
+    {
+        // Récupération de l'objet PDO pour effectuer des requêtes SQL
+        $pdo = AccesDonnees::getPdo();
 
-    // Recherche du client dans la base de données
-    $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE email = :email');
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-    $client = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Recherche du client dans la base de données
+        $stmt = $pdo->prepare('SELECT * FROM lf_clients WHERE email = :email');
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $client = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $client;
-}
+        return $client;
+    }
 
     /**
      * Permet à un client inscrit de se connecter
@@ -50,7 +61,7 @@ public static function trouverClientParEmail($email)
         return false;
     }
 
-    
+
 
     /**
      * Crée un nouveau client avec une adresse associée.
@@ -65,8 +76,6 @@ public static function trouverClientParEmail($email)
      */
     public static function creerClient($email, $password, $nom, $prenom, $rue, $cp, $ville)
     {
-
-
         // Récupération de l'objet PDO pour effectuer des requêtes SQL
         $pdo = AccesDonnees::getPdo();
 
