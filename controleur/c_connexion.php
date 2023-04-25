@@ -19,7 +19,7 @@ if (isset($_POST['connexion_submit'])) {
         $_SESSION['client'] = $client;
 
         echo '<script>alert("Vous êtes bien connecté(e) ' . $client["prenom"] . ' !");</script>';
-        echo '<script>window.location.replace("index.php");</script>'; // Redirection avec JavaScript
+        echo '<script>window.location.replace("index.php?page=profil");</script>'; // Redirection avec JavaScript
         exit; // Arrêt de l'exécution du script
     }
 }

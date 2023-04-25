@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     // Préparation des informations de l'email
     $to = 'jfvillac@hotmail.com';
     $subject = 'Envoi depuis page Contact';
-    $message = '<h1>Message envoyé depuis la page Contact de monsite.fr</h1>
+    $message = '<h1>Message envoyé depuis la page Contact de lafleur.fr</h1>
                 <p><b>Nom : </b>' . htmlspecialchars($_POST['nom']) . '<br>
                 <b>Email : </b>' . htmlspecialchars($_POST['email']) . '<br>
                 <b>Téléphone : </b>' . htmlspecialchars($_POST['telephone']) . '<br>

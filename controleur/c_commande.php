@@ -66,7 +66,7 @@ if (isset($_POST['paiement_submit'])) {
 
         // Rediriger vers la page profil
         header('Location: index.php?page=loterie');
-        // header('Location: vue/content/loterie_content.php');
+        
         exit();
     }
 
