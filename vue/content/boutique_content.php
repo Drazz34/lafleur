@@ -1,6 +1,6 @@
 <section>
 
-    <h1 class="h1 titre_boutique">Notre boutique en ligne</h1>
+    <h2 class="h1 titre_boutique">Notre boutique en ligne</h2>
 
     <form action="index.php?page=boutique" method="get">
 
