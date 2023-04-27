@@ -5,6 +5,7 @@ const navigation = document.querySelector("nav");
 
 hamburgerBtn.addEventListener("click", toggleNav)
 
+// change l'apparence du bouton et affiche / cache la navigation
 function toggleNav() {
     hamburgerBtn.classList.toggle("active");
     navigation.classList.toggle("active");
@@ -123,6 +124,7 @@ if (params.get('page') === 'commande') {
     });
 }
 
+// Met à jour l'affichage des frais de livraison
 function updateFraisLivraisonId() {
     const prix = parseFloat(document.getElementById('prix_article').value);
     const fraisLivraisonIdField = document.getElementById('frais_livraison_id');
@@ -134,6 +136,7 @@ function updateFraisLivraisonId() {
     }
 }
 
+// Met à jour la quantité d'articles selectionnée et les frais de livraison
 function updateQuantite() {
     var quantite_visible = document.getElementById('quantite_visible');
     var quantite = document.getElementById('quantite');
@@ -141,14 +144,12 @@ function updateQuantite() {
     updateFraisLivraisonId();
 }
 
-// Ajoutez ces lignes pour ajouter un écouteur d'événement à l'élément 'quantite_visible'
 var quantite_visible = document.getElementById('quantite_visible');
 if (quantite_visible) {
     quantite_visible.addEventListener('input', updateQuantite);
 }
 
 // Validation de l'email à l'inscription
-
 function validateEmail() {
     const emailInput = document.getElementById("creation_email");
     const emailError = document.getElementById("email_error");
@@ -164,13 +165,13 @@ function validateEmail() {
     }
 }
 
+// remonter au champ email
 function scrollToEmailInput() {
     const emailInput = document.getElementById("creation_email");
     emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Validation du mot de passe à l'inscription
-
 function validatePassword() {
     const passwordInput = document.getElementById("creation_password");
     const passwordError = document.getElementById("password_error");
@@ -186,11 +187,13 @@ function validatePassword() {
     }
 }
 
+// remonter au champ email
 function scrollToPasswordInput() {
     const passwordInput = document.getElementById("creation_password");
     passwordInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+// Vérifie si les champs email et mot de passe sont correctement remplis et empêche la soumission si incorrects
 function validateForm(event) {
     let validEmail = validateEmail();
     let validPassword = validatePassword();
@@ -200,14 +203,7 @@ function validateForm(event) {
     }
 }
 
-// Ajoutez cet écouteur d'événement pour appeler la fonction validateForm lors de la soumission du formulaire
-// window.addEventListener("DOMContentLoaded", function () {
-//     const form = document.getElementById("creation_form");
-//     if (form) {
-//         form.addEventListener("submit", validateForm);
-//     }
-// });
-
+// Ajouter une validation côté client pour les champs de saisie d'e-mail et de mot de passe et empêcher la soumission du formulaire si l'une des validations échoue.
 window.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("creation_form");
     const emailInput = document.getElementById("creation_email");
