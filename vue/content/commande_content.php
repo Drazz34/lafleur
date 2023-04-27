@@ -2,7 +2,7 @@
 
     <div class="ma_commande_titre">
 
-        <h1 class="h1">Ma commande</h1>
+        <h2 class="h1">Ma commande</h2>
 
         <div class="frais">
 

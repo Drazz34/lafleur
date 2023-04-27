@@ -1,6 +1,6 @@
 <section id="jeuLoterie">
 
-    <h1 class="h1">Jeu spécial fête des mères</h1>
+    <h2 class="h1">Jeu spécial fête des mères</h2>
 
     <p class="pLoterie">Tentez de gagner un de nos nombreux lots, bonne chance <?= $client['prenom'] ?> !</p>
 

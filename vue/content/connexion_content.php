@@ -1,6 +1,6 @@
 <section class="formulaire">
 
-    <h1 class="h1 connexion_h1">Connectez-vous</h1>
+    <h2 class="h1 connexion_h1">Connectez-vous</h2>
 
         <form action="#" method="post">
 
@@ -20,7 +20,7 @@
 
 <section class="formulaire">
 
-    <h1 class="h1 connexion_h1">Créez votre compte</h1>
+    <h2 class="h1 connexion_h1">Créez votre compte</h2>
 
         <form action="#" method="post" id="creation_form">
 

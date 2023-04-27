@@ -1,6 +1,6 @@
 <section class="commande">
 
-    <h1 class="h1">Mon profil</h1>
+    <h2 class="h1">Mon profil</h2>
 
     <?php if (!empty($commandesClient)) : ?>
 

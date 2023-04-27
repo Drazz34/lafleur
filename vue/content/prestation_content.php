@@ -2,7 +2,7 @@
 
     <div class="prestation_titre">
 
-        <h1 class="h1">Nos prestations</h1>
+        <h2 class="h1">Nos prestations</h2>
 
     </div>
 
