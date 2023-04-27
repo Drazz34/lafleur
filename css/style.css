@@ -690,7 +690,7 @@ uncomment this part if you haven't added this code anywhere else */
 
 /* -------- PAGE PROFIL ----------- */
 
-.commande h1 {
+.commande .h1 {
     text-align: center;
     margin: 100px 0;
 }

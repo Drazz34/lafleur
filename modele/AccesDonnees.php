@@ -11,15 +11,15 @@
  */
 class AccesDonnees {
 
-    private static $serveur = 'mysql:host=localhost';
-    private static $bdd = 'dbname=lafleur';
-    private static $user = 'root';
-    private static $mdp = 'Mysql5*';
+    // private static $serveur = 'mysql:host=localhost';
+    // private static $bdd = 'dbname=lafleur';
+    // private static $user = 'root';
+    // private static $mdp = 'Mysql5*';
 
-    // private static $serveur = 'mysql:host=localhost:3306';
-    // private static $bdd = 'dbname=c87villac';
-    // private static $user = 'c87villac';
-    // private static $mdp = 'cnAA@v76';
+    private static $serveur = 'mysql:host=localhost:3306';
+    private static $bdd = 'dbname=c87villac';
+    private static $user = 'c87villac';
+    private static $mdp = 'cnAA@v76';
 
     /**
      *
