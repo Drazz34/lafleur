@@ -47,56 +47,7 @@
 <script>
     const gains = <?php echo json_encode($gains); ?>;
 
-    // // Fonction qui détermine le lot gagné en fonction des probabilités souhaitées
-    // function getPrize(gains) {
-    //     // Génère un nombre aléatoire entre 0 et 100
-    //     const randomNumber = Math.random() * 100;
-    //     console.log(randomNumber);
-    //     // Compare le nombre aléatoire aux seuils pour déterminer le prix et le symbole correspondant
-    //     for (let gain of gains) {
-    //         let id = gain.id;
-    //         let quantite = gain.quantite_totale;
-
-    //         if (quantite > 0) {
-    //             if (randomNumber >= 0 && randomNumber < 2 && id === 1) {
-    //                 return {
-    //                     id: 1,
-    //                     prize: "bouquet de roses",
-    //                     symbol: "💐"
-    //                 };
-    //             } else if (randomNumber >= 2 && randomNumber < 10 && id === 2) {
-    //                 return {
-    //                     id: 2,
-    //                     prize: "rose",
-    //                     symbol: "🌹"
-    //                 };
-    //             } else if (randomNumber >= 10 && randomNumber < 30 && id === 3) {
-    //                 return {
-    //                     id: 3,
-    //                     prize: "porte-clé",
-    //                     symbol: "🔑"
-    //                 };
-    //             } else if (randomNumber >= 30 && randomNumber < 60 && id === 4) {
-    //                 return {
-    //                     id: 4,
-    //                     prize: "sac réutilisable",
-    //                     symbol: "🛍️"
-    //                 };
-    //             } else if (randomNumber >= 60 && randomNumber < 100 && id === 5) {
-    //                 return {
-    //                     id: 5,
-    //                     prize: "stylo",
-    //                     symbol: "🖊️"
-    //                 };
-    //             }
-    //         }
-    //         console.log("id:", id, "quantite:", quantite, "randomNumber:", randomNumber);
-    //     }
-    //     
-    //     return null;
-    // }
-
-    const probabilityThresholds = {
+    const probabilityThresholds = { // seuil
         1: {
             threshold: 2,
             prize: "bouquet de roses",
