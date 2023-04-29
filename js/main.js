@@ -187,6 +187,28 @@ function validatePassword() {
     }
 }
 
+function validateNewPassword() {
+    const passwordNewInput = document.getElementById("modif_password");
+    const passwordNewError = document.querySelector(".password_error");
+    const passwordNewRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (passwordNewInput.value.length >= 8 && passwordNewRegex.test(passwordNewInput.value)) {
+        passwordNewError.style.display = "none";
+        return true;
+    } else {
+        passwordNewError.style.display = "block";
+        return false;
+    }
+}
+
+function validateNewForm(event) {
+    let validNewPassword = validateNewPassword();
+
+    if (!validNewPassword) {
+        event.preventDefault();
+    }
+}
+
 // remonter au champ email
 function scrollToPasswordInput() {
     const passwordInput = document.getElementById("creation_password");
@@ -208,6 +230,7 @@ window.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("creation_form");
     const emailInput = document.getElementById("creation_email");
     const passwordInput = document.getElementById("creation_password");
+    const passwordNewInput = document.getElementById("modif_password");
 
     if (form) {
         form.addEventListener("submit", validateForm);
@@ -219,5 +242,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
     if (passwordInput) {
         passwordInput.addEventListener("blur", validatePassword);
+    }
+
+    if (passwordNewInput) {
+        passwordNewInput.addEventListener("blur", validateNewPassword);
     }
 });

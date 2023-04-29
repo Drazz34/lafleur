@@ -12,14 +12,15 @@ if (!empty($_SESSION['client'])) {
 }
 
 if (!empty($_POST['modif_submit'])) {
-    $nouvelEmail = $_POST['modif_email'];
-    $nouveauNom = $_POST['modif_nom'];
-    $nouveauPrenom = $_POST['modif_prenom'];
-    $nouvelleRue = $_POST['modif_rue'];
-    $nouveauCp = $_POST['modif_cp'];
-    $nouvelleVille = $_POST['modif_ville'];
-    $ancienMotDePasse = $_POST['modif_ancien_password'];
-    $nouveauMotDePasse = $_POST['modif_password'];
+
+    $nouvelEmail = filter_input(INPUT_POST, 'modif_email', FILTER_SANITIZE_EMAIL);
+    $nouveauNom = filter_input(INPUT_POST, 'modif_nom');
+    $nouveauPrenom = filter_input(INPUT_POST, 'modif_prenom');
+    $nouvelleRue = filter_input(INPUT_POST, 'modif_rue');
+    $nouveauCp = filter_input(INPUT_POST, 'modif_cp', FILTER_SANITIZE_NUMBER_INT);
+    $nouvelleVille = filter_input(INPUT_POST, 'modif_ville');
+    $ancienMotDePasse = filter_input(INPUT_POST, 'modif_ancien_password');
+    $nouveauMotDePasse = filter_input(INPUT_POST, 'modif_password');
 
     $client = M_Client::trouverClientParId($_SESSION['client']['id']);
     // Si le mot de passe actuel est correct et que le nouveau mot de passe n'est pas vide, mettez à jour le mot de passe

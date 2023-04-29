@@ -49,7 +49,7 @@
 
     <p>Modifier mes informations :</p>
 
-    <form action="#" method="post">
+    <form action="#" method="post" id="modifForm">
 
         <label for="modif_email"></label>
 
@@ -60,7 +60,7 @@
         <input type="password" name="modif_ancien_password" id="modif_ancien_password" class="input_form" placeholder="Ancien mot de passe">
 
         <label for="modif_password"></label>
-
+        <span class="password_error error" style="display:none; color: red;">Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial (@, $, !, %, *, ?, &).</span>
         <input type="password" name="modif_password" id="modif_password" class="input_form" placeholder="Nouveau mot de passe">
 
         <label for="modif_nom"></label>

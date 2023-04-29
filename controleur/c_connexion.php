@@ -1,7 +1,5 @@
 <?php
 
-// Inclusion des fichiers nécessaires
-// require_once 'acces_donnees.php';
 require_once './modele/M_Client.php';
 
 // Connexion d'un client déjà inscrit
