@@ -33,6 +33,14 @@ if (isset($_POST['submit'])) {
     $cp = filter_input(INPUT_POST, 'creation_cp', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/^\d{5}$/')));
     $ville = filter_input(INPUT_POST, 'creation_ville');
 
+    // Vérification si l'email est déjà utilisé
+    $client_existant = M_Client::trouverClientParEmail($email);
+    if ($client_existant !== null) {
+        echo '<script>alert("Cet email est déjà utilisé. Veuillez en choisir un autre.");</script>';
+        echo '<script>window.location.replace("index.php?page=connexion");</script>'; // Redirection avec JavaScript
+        exit;
+    }
+
     // Création du nouveau client avec l'adresse associée
     M_Client::creerClient($email, $password, $nom, $prenom, $rue, $cp, $ville);
 
