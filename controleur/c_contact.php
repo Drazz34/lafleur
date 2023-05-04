@@ -7,6 +7,8 @@ if (!empty($_POST)) {
         exit;
     }
 
+    // filter input
+
     // Préparation des informations de l'email
     $to = 'jfvillac@hotmail.com';
     $subject = 'Envoi depuis page Contact';
@@ -17,7 +19,7 @@ if (!empty($_POST)) {
                 <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
     $headers = "From: webmaster@lafleur.fr\r\n";
     $headers .= "Reply-To: " . $_POST['email'] . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
+    // $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
     // Envoi de l'email
