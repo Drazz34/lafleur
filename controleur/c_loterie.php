@@ -6,7 +6,7 @@ include_once "./modele/M_Commande.php";
 $gainLoterieId = null;
 
 if (isset($_POST['prize_id'])) {
-    $gainLoterieId = intval($_POST['prize_id']);
+    $gainLoterieId = filter_input(INPUT_POST, 'prize_id', FILTER_VALIDATE_INT);
 }
 
 // Vérifie si le bouton "Valider le gain" a été cliqué

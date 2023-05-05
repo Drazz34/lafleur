@@ -36,6 +36,7 @@ class M_Article
     /**
      * Retourne tous les articles d'une catégorie sous la forme d'un tableau associatif
      * 
+     * @param int $id
      * @return array
      */
 
@@ -54,6 +55,7 @@ class M_Article
     /**
      * Retourne tous les articles par couleur sous la forme d'un tableau associatif
      * 
+     * @param int $id
      * @return array
      */
 
@@ -72,6 +74,8 @@ class M_Article
     /**
      * Retourne tous les articles par catégorie et par couleur sous la forme d'un tableau associatif
      * 
+     * @param int $id_categorie
+     * @param int $id_couleur
      * @return array
      */
 

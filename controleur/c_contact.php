@@ -9,16 +9,22 @@ if (!empty($_POST)) {
 
     // filter input
 
+    $nom = filter_input(INPUT_POST, 'nom');
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $telephone = filter_input(INPUT_POST, 'telephone');
+    $message = filter_input(INPUT_POST, 'message');
+
+
     // Préparation des informations de l'email
     $to = 'jfvillac@hotmail.com';
     $subject = 'Envoi depuis page Contact';
     $message = '<h1>Message envoyé depuis la page Contact de lafleur.fr</h1>
-                <p><b>Nom : </b>' . htmlspecialchars($_POST['nom']) . '<br>
-                <b>Email : </b>' . htmlspecialchars($_POST['email']) . '<br>
-                <b>Téléphone : </b>' . htmlspecialchars($_POST['telephone']) . '<br>
-                <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
+                <p><b>Nom : </b>' . htmlspecialchars($nom) . '<br>
+                <b>Email : </b>' . htmlspecialchars($email) . '<br>
+                <b>Téléphone : </b>' . htmlspecialchars($telephone) . '<br>
+                <b>Message : </b>' . htmlspecialchars($message) . '</p>';
     $headers = "From: webmaster@lafleur.fr\r\n";
-    $headers .= "Reply-To: " . $_POST['email'] . "\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
     // $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 

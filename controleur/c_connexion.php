@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
     // Vérification si l'email est déjà utilisé
     $client_existant = M_Client::trouverClientParEmail($email);
-    if ($client_existant !== null) {
+    if ($client_existant !== false) {
         echo '<script>alert("Cet email est déjà utilisé. Veuillez en choisir un autre.");</script>';
         echo '<script>window.location.replace("index.php?page=connexion");</script>'; // Redirection avec JavaScript
         exit;

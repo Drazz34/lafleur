@@ -15,20 +15,20 @@ $articles = M_Article::afficheTousLesArticles();
 
 // Variable pour afficher tous les articles d'une catégorie
 if (isset($_GET['categorie'])) {
-    $id = $_GET['categorie'];
+    $id = filter_input(INPUT_GET, 'categorie', FILTER_SANITIZE_NUMBER_INT);
     $articlesDUneCategorie = M_Article::afficheLesArticlesDUneCategorie($id);
 }
 
 // Variable pour afficher tous les articles par couleur
 if (isset($_GET['couleur'])) {
-    $id = $_GET['couleur'];
+    $id = filter_input(INPUT_GET, 'couleur', FILTER_SANITIZE_NUMBER_INT);
     $articlesDUneCouleur = M_Article::afficheLesArticlesParCouleur($id);
 }
 
 // Variable pour afficher tous les articles par catégorie et par couleur
 if (isset($_GET['categorie']) && isset($_GET['couleur'])) {
-    $id_categorie = $_GET['categorie'];
-    $id_couleur = $_GET['couleur'];
+    $id_categorie = filter_input(INPUT_GET, 'categorie', FILTER_SANITIZE_NUMBER_INT);
+    $id_couleur = filter_input(INPUT_GET, 'couleur', FILTER_SANITIZE_NUMBER_INT);
     $articlesDUneCategorieEtDUneCouleur = M_Article::afficheLesArticlesParCategorieEtParCouleur($id_categorie, $id_couleur);
 }
 

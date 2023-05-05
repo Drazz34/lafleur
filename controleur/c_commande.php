@@ -54,7 +54,7 @@ if (isset($_POST['paiement_submit'])) {
         // Obtenir les frais de livraison gratuits et payants
         $frais_gratuit = $frais_livraison[0];
         $frais_payant = $frais_livraison[1];
-
+        $gain_loterie_id = null;
         // Insérer l'adresse de livraison dans la table lf_adresses et récupérer l'ID de la nouvelle adresse
         $adresse_id = M_Commande::ajouterAdresseLivraison($livraison_rue, $livraison_cp, $livraison_ville);
 

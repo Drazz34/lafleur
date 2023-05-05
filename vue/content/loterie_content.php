@@ -6,10 +6,6 @@
 
     <div class="machine">
 
-        <!-- <form id="prizeForm" action="/lafleur/index.php?page=profil" method="POST" style="display: none;">
-            <input type="hidden" name="prize_id" id="prize_id">
-        </form> -->
-
         <div class="slots">
 
             <div class="slot" id="slot1">
@@ -91,9 +87,7 @@
                     symbol: probabilityThresholds[id].symbol
                 };
             }
-
         }
-        return null;
     }
 
     let prizeId;

@@ -165,12 +165,6 @@ function validateEmail() {
     }
 }
 
-// remonter au champ email
-function scrollToEmailInput() {
-    const emailInput = document.getElementById("creation_email");
-    emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
 // Validation du mot de passe à l'inscription
 function validatePassword() {
     const passwordInput = document.getElementById("creation_password");
@@ -184,6 +178,16 @@ function validatePassword() {
         passwordError.style.display = "block";
         scrollToPasswordInput();
         return false;
+    }
+}
+
+// Vérifie si les champs email et mot de passe sont correctement remplis et empêche la soumission si incorrects
+function validateForm(event) {
+    let validEmail = validateEmail();
+    let validPassword = validatePassword();
+
+    if (!validEmail || !validPassword) {
+        event.preventDefault();
     }
 }
 
@@ -209,21 +213,19 @@ function validateNewForm(event) {
     }
 }
 
-// remonter au champ email
+// remonter au champ mot de passe
 function scrollToPasswordInput() {
     const passwordInput = document.getElementById("creation_password");
     passwordInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// Vérifie si les champs email et mot de passe sont correctement remplis et empêche la soumission si incorrects
-function validateForm(event) {
-    let validEmail = validateEmail();
-    let validPassword = validatePassword();
-
-    if (!validEmail || !validPassword) {
-        event.preventDefault();
-    }
+// remonter au champ email
+function scrollToEmailInput() {
+    const emailInput = document.getElementById("creation_email");
+    emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+
+
 
 // Ajouter une validation côté client pour les champs de saisie d'e-mail et de mot de passe et empêcher la soumission du formulaire si l'une des validations échoue.
 window.addEventListener("DOMContentLoaded", function () {
